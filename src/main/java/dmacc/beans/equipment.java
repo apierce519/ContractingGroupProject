@@ -6,10 +6,21 @@
 
 package dmacc.beans;
 
+import javax.persistence.Entity;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author cmboe
  *
  */
+@Entity
+@Data
+@NoArgsConstructor
 public class equipment {
-
+	//variables
+	int id;
+	String name;
+	String type;
 }
