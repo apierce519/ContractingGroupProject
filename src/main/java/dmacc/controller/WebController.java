@@ -5,7 +5,12 @@
  */
 package dmacc.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import dmacc.repository.ContractRepository;
+import dmacc.repository.EquipmentRepository;
+import dmacc.repository.UserRepository;
 
 /**
  * @author Andrew Pierce - ajpierce1
@@ -14,5 +19,11 @@ import org.springframework.stereotype.Controller;
 public class WebController {
 	
 	@Autowired
+	UserRepository userRepo;
 	
+	@Autowired
+	EquipmentRepository equipmentRepo;
+	
+	@Autowired
+	ContractRepository contractRepo;
 }
