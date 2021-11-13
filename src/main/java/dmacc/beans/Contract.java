@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class contract {
+public class Contract {
 	//variables
 	int id;
 	String title;

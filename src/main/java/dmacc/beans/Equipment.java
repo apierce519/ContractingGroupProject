@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class equipment {
+public class Equipment {
 	//variables
 	int id;
 	String name;
