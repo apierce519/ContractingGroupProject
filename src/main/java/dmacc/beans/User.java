@@ -19,12 +19,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class User {
-	//variables
+	// variables
 	int id;
 	String username;
 	String password;
 	String firstName;
 	String lastName;
 	String userType;
-	
+
 }
