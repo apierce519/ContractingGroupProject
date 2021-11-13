@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert new user</title>
+</head>
+<body>
+<form th:object="${newUser}" 
+th:action="@{/update/{id}(id=${newUser.id})}" method=POST>>
+
+Username: <input name="username" size="20" 
+th:field="*{username}"><br />
+
+Password: <input name="password" size="20" 
+th:field="*{password}"><br />
+
+First Name: <input name="firstName" size="20" 
+th:field="*{firstName}"><br />
+
+Last Name: <input name="lastName" size="20" 
+th:field="*{lastName}"><br />
+
+
+<input name="submit" type="submit" value="submit" />
+</form>
+
+<a href="viewAll">View all Users</a>
+</body>
+</html>
