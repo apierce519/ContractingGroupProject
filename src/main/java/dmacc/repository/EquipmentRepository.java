@@ -7,6 +7,8 @@ package dmacc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import dmacc.beans.Equipment;
+
 /**
  * @author Andrew Pierce - ajpierce1
  */
