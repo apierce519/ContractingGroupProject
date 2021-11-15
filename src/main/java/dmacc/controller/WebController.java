@@ -42,6 +42,7 @@ public class WebController {
 	@Autowired
 	ContractRepository contractRepo;
 
+	//Users
 	@GetMapping("/viewUsers")
 	public String viewUsers(Model model) {
 		if (userRepo.findAll().isEmpty()) {
@@ -77,6 +78,7 @@ public class WebController {
 		return viewUsers(model);
 	}
 
+	//Contracts
 	@GetMapping("/viewContracts")
 	public String viewContracts(Model model) {
 		if (contractRepo.findAll().isEmpty()) {
@@ -112,6 +114,8 @@ public class WebController {
 		return viewContracts(model);
 	}
 
+	
+	//Equipment
 	@GetMapping("/viewEquipment")
 	public String viewEquipment(Model model) {
 		if (equipmentRepo.findAll().isEmpty()) {
