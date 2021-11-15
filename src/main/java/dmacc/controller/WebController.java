@@ -90,7 +90,7 @@ public class WebController {
 	@PostMapping("/inputContract")
 	private String addNewContract(Model model) {
 		Contract c = new Contract();
-		model.addAttribute("newContact", c);
+		model.addAttribute("newContract", c);
 		return "contract-input";
 	}
 

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert new user</title>
+<title>Add a user</title>
 </head>
 <body>
 <form th:object="${newUser}" 
@@ -20,10 +20,9 @@ th:field="*{firstName}"><br />
 Last Name: <input name="lastName" size="20" 
 th:field="*{lastName}"><br />
 
-
 <input name="submit" type="submit" value="submit" />
 </form>
 
-<a href="viewAll">View all Users</a>
+<a href="viewUsers">View all Users</a>
 </body>
 </html>

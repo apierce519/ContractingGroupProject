@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a Contract</title>
+</head>
+<body>
+<form th:object="${newContract}" 
+th:action="@{/update/{id}(id=${newContract.id})}" method=POST>>
+
+Title: <input name="title" size="20" 
+th:field="*{title}"><br />
+
+Length: <input name="length" size="20" 
+th:field="*{length}"><br />
+
+Number of workers: <input name="manpower" size="20" 
+th:field="*{manpower}"><br />
+
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="viewContracts">View all Contracts</a>
+</body>
+</html>
