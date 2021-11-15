@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.beans.Contract;
 import dmacc.beans.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
@@ -24,7 +25,7 @@ import dmacc.repository.UserRepository;
 /*
  * Things to do:
  * 
- * User - -update -edit Equipment -view -input -delete -update -edit Contract
+Contract
  * -view -input -delete -update -edit
  * 
  */
@@ -49,7 +50,7 @@ public class WebController {
 		return "user-results";
 	}
 
-	@GetMapping("/inputUser")
+	@PostMapping("/inputUser")
 	private String addNewUser(Model model) {
 		User u = new User();
 		model.addAttribute("newUser", u);
@@ -74,5 +75,40 @@ public class WebController {
 	public String editUser(User u, Model model) {
 		userRepo.save(u);
 		return viewUsers(model);
+	}
+	
+	@GetMapping("/viewContracts")
+	public String viewContracts(Model model) {
+		if(contractRepo.findAll().isEmpty()) {
+			return addNewContract(model);
+		}
+		return "contract-results";
+	}
+	
+	@PostMapping("/inputContract")
+	private String addNewContract(Model model) {
+		Contract c = new Contract();
+		model.addAttribute("newContact",c);
+		return "contract-input";
+	}
+	
+	@GetMapping("/deleteContract/{id}")
+	public String deleteContract(@PathVariable("id") int id, Model model) {
+		Contract c = contractRepo.findById(id).orElse(null);
+		contractRepo.delete(c);
+		return viewContracts(model);
+	}
+	
+	@GetMapping("/editContract/{id}")
+	public String findContractToUpdate(@PathVariable("id")int id, Model model) {
+		Contract c = contractRepo.findById(id).orElse(null);
+		model.addAttribute("newContract",c);
+		return "contract-input";
+	}
+	
+	@PostMapping("/updateContract/{id}")
+	public String editContract(Contract c, Model model) {
+		contractRepo.save(c);
+		return viewContracts(model);
 	}
 }
