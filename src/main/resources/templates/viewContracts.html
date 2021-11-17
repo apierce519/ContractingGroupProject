@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View all Contracts</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentContract : ${newContract}" >
+
+<td th:text="${currentContract.id}" />
+ <td th:text="${currentContract.title}" />
+ <td th:text="${currentContract.length}" />
+ <td th:text="${currentContract.manpower}" />
+ 
+ <td><a th:href="@{/editContract/{id}(id=${currentContract.id})}">Edit</a></td>
+ 
+ <td><a 
+	th:href="@{/deleteContract/{id}(id=${currentContract.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputContract">Add a new Contract</a>
+</body>
+</html>

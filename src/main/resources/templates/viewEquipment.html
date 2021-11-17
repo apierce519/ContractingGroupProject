@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View all Equipment</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentEquipment : ${newEquipment}" >
+
+<td th:text="${currentEquipment.id}" />
+ <td th:text="${currentEquipment.name}" />
+ <td th:text="${currentEquipment.type}" />
+ 
+ <td><a th:href="@{/editEquipment/{id}(id=${currentEquipment.id})}">Edit</a></td>
+ 
+ <td><a 
+	th:href="@{/deleteEquipment/{id}(id=${currentEquipment.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputEquipment">Add new Equipment</a>
+</body>
+</html>
