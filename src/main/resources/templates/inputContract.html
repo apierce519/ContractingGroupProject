@@ -6,7 +6,7 @@
 </head>
 <body>
 <form th:object="${newContract}" 
-th:action="@{/update/{id}(id=${newContract.id})}" method=POST>>
+th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST>>
 
 Title: <input name="title" size="20" 
 th:field="*{title}"><br />

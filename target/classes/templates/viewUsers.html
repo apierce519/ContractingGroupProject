@@ -6,13 +6,22 @@
 <body>
 <form>
 <table>
+	<tr>
+		<th>ID</th>
+		<th>User Name</th>
+		<th>Password</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>User type</th>
+	</tr>
+	
 <tr th:each="currentUser : ${newUser}" >
 
 <td th:text="${currentUser.id}" />
  <td th:text="${currentUser.username}" />
  <td th:text="${currentUser.password}" />
- <td th:text="${currentUser.firstname}" />
- <td th:text="${currentUser.lastname}" />
+ <td th:text="${currentUser.firstName}" />
+ <td th:text="${currentUser.lastName}" />
  <td th:text="${currentUser.userType}" />
  
  <td><a th:href="@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
