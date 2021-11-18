@@ -19,12 +19,14 @@ public class LoginController {
 
 	@PostMapping("/validateUser")
 	public void checkUserCredentials() {
-		try {
-			String queryString = "SELECT * FROM user WHERE username=? AND password=?";
-			ResultSet rs = Statement.executeQuery(queryString);
-			
-			
-		}
+		/*
+		 * try { String queryString =
+		 * "SELECT * FROM user WHERE username=? AND password=?"; ResultSet rs =
+		 * Statement.executeQuery(queryString);
+		 * 
+		 * 
+		 * }
+		 */
 	}
 		
 }

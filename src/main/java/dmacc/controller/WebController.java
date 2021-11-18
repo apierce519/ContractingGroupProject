@@ -42,6 +42,7 @@ public class WebController {
 	@Autowired
 	ContractRepository contractRepo;
 
+
 	@GetMapping("/loginOrRegister")
 	public String viewLogin(Model model) {
 		User u = new User();
@@ -93,6 +94,7 @@ public class WebController {
 		if (contractRepo.findAll().isEmpty()) {
 			return addNewContract(model);
 		}
+		model.addAttribute("newContract", contractRepo.findAll());
 		return "viewContracts";
 	}
 
@@ -130,6 +132,7 @@ public class WebController {
 		if (equipmentRepo.findAll().isEmpty()) {
 			return addNewEquipment(model);
 		}
+		model.addAttribute("newEquipment", equipmentRepo.findAll());
 		return "viewEquipment";
 	}
 
