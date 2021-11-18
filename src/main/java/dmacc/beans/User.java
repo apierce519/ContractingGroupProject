@@ -7,6 +7,8 @@
 package dmacc.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
 	// variables
+	@Id
+	@GeneratedValue
 	int id;
 	String username;
 	String password;

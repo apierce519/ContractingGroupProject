@@ -42,20 +42,30 @@ public class WebController {
 	@Autowired
 	ContractRepository contractRepo;
 
+
+	@GetMapping("/loginOrRegister")
+	public String viewLogin(Model model) {
+		User u = new User();
+		model.addAttribute("loginCredential", u);
+		return "loginOrRegister";
+	}
+	
+	
 	//Users
 	@GetMapping("/viewUsers")
 	public String viewUsers(Model model) {
 		if (userRepo.findAll().isEmpty()) {
 			return addNewUser(model);
 		}
-		return "user-results";
+		model.addAttribute("newUser", userRepo.findAll());
+		return "viewUsers";
 	}
 
-	@PostMapping("/inputUser")
+	@GetMapping("/inputUser")
 	private String addNewUser(Model model) {
 		User u = new User();
 		model.addAttribute("newUser", u);
-		return "user-input";
+		return "inputUser";
 	}
 
 	@GetMapping("/deleteUser/{id}")
@@ -69,7 +79,7 @@ public class WebController {
 	public String findUserToUpdate(@PathVariable("id") int id, Model model) {
 		User u = userRepo.findById(id).orElse(null);
 		model.addAttribute("newUser", u);
-		return "user-input";
+		return "inputUser";
 	}
 
 	@PostMapping("/updateUser/{id}")
@@ -84,14 +94,15 @@ public class WebController {
 		if (contractRepo.findAll().isEmpty()) {
 			return addNewContract(model);
 		}
-		return "contract-results";
+		model.addAttribute("newContract", contractRepo.findAll());
+		return "viewContracts";
 	}
 
-	@PostMapping("/inputContract")
+	@GetMapping("/inputContract")
 	private String addNewContract(Model model) {
 		Contract c = new Contract();
 		model.addAttribute("newContract", c);
-		return "contract-input";
+		return "inputContract";
 	}
 
 	@GetMapping("/deleteContract/{id}")
@@ -105,7 +116,7 @@ public class WebController {
 	public String findContractToUpdate(@PathVariable("id") int id, Model model) {
 		Contract c = contractRepo.findById(id).orElse(null);
 		model.addAttribute("newContract", c);
-		return "contract-input";
+		return "inputContract";
 	}
 
 	@PostMapping("/updateContract/{id}")
@@ -121,19 +132,21 @@ public class WebController {
 		if (equipmentRepo.findAll().isEmpty()) {
 			return addNewEquipment(model);
 		}
-		return "equipment-results";
+		model.addAttribute("newEquipment", equipmentRepo.findAll());
+		return "viewEquipment";
 	}
 
-	@PostMapping("/inputEquipment")
+	@GetMapping("/inputEquipment")
 	public String addNewEquipment(Model model) {
 		Equipment e = new Equipment();
 		model.addAttribute("newEquipment", e);
-		return "equipment-input";
+		return "inputEquipment";
 	}
 
 	@GetMapping("/deleteEquipment/{id}")
 	public String deleteEquipment(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
+		equipmentRepo.delete(e);
 		return viewEquipment(model);
 	}
 	
@@ -141,7 +154,7 @@ public class WebController {
 	public String findEquipmentToUpdate(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
 		model.addAttribute("newEquipment", e);
-		return "equipment-input";
+		return "inputEquipment";
 	}
 	
 	@PostMapping("/updateEquipment/{id}")
