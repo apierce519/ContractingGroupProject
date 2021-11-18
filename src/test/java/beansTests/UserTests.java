@@ -49,11 +49,40 @@ class UserTests {
 		assertEquals(newUser.getUserType(), userType);
 	}
 	/**
+	 * Test method for set set new user info is incorrect match
+	 */
+	
+	@Test
+	void setUserTestGetAndSetNotEquals() {
+		User newUser = new User();
+		
+		int id1 = 13;
+		String username1 = "user124";
+		String password1= "pass";
+		String firstName1 = "Fail";
+		String lastName1 = "Test";
+		String userType1 = "Customer";
+		
+		newUser.setId(id1);
+		newUser.setUsername(username1);
+		newUser.setPassword(password1);
+		newUser.setFirstName(firstName1);
+		newUser.setLastName(lastName1);
+		newUser.setUserType(userType1);
+		
+		assertNotEquals(newUser.getId(), id);
+		assertNotEquals(newUser.getUsername(), username);
+		assertNotEquals(newUser.getPassword(),password);
+		assertNotEquals(newUser.getFirstName(), firstName);
+		assertNotEquals(newUser.getLastName(), lastName);
+		assertNotEquals(newUser.getUserType(), userType);
+	}
+	/**
 	 * Test method for set id
 	 */
 	
 	@Test
-	void testSetIdSuccess() {
+	void testSetIdEquals() {
 		int userId = 4;
 		
 		int actual = id;
@@ -61,10 +90,10 @@ class UserTests {
 		assertEquals(actual, userId);
 	}
 	/**
-	 * Test method for set id
+	 * Test method for set id doesn't match
 	 */
 	@Test
-	void testSetIdFail() {
+	void testSetIdNotEquals() {
 		int userId = 5;
 		
 		int actual = id;
@@ -76,7 +105,7 @@ class UserTests {
 	 * Test method for setting user name
 	 */
 	@Test
-	void testSetUsernamePass() {
+	void testSetUsernameEquals() {
 		String userN = "user123";
 		
 		String actual = username;
@@ -88,10 +117,10 @@ class UserTests {
 	 */
 	
 	/**
-	 * Test method for setting user name fail
+	 * Test method for setting user name doesn't match
 	 */
 	@Test
-	void testSetUsernameFail() {
+	void testSetUsernameNotEquals() {
 		String userN = "fail";
 		
 		String actual = username;
@@ -103,7 +132,7 @@ class UserTests {
 	 * Test method for setting password
 	 */
 	@Test
-	void testSetPasswordPass() {
+	void testSetPasswordEquals() {
 		String userP = "password";
 		
 		String actual = password;
@@ -111,10 +140,10 @@ class UserTests {
 		assertEquals(actual, userP);
 	}
 	/**
-	 * Test method for setting password fail
+	 * Test method for setting password doesn't match
 	 */
 	@Test
-	void testSetPasswordFail() {
+	void testSetPasswordNotEquals() {
 		String userP = "denied";
 		
 		String actual = password;
@@ -126,7 +155,7 @@ class UserTests {
 	 * Test method for setting first name
 	 */
 	@Test
-	void testSetFirstNamePass() {
+	void testSetFirstNameEquals() {
 		String userF = "Test";
 		
 		String actual = firstName;
@@ -135,10 +164,10 @@ class UserTests {
 	}
 	
 	/**
-	 * Test method for setting first name fail
+	 * Test method for setting first name doesn't match
 	 */
 	@Test
-	void testSetFirstNameFail() {
+	void testSetFirstNameNotEquals() {
 		String userF = "First";
 		
 		String actual = firstName;
@@ -150,7 +179,7 @@ class UserTests {
 	 * Test method for setting last name
 	 */
 	@Test
-	void testSetLastNamePass() {
+	void testSetLastNameEquals() {
 		String userL = "Case";
 		
 		String actual = lastName;
@@ -158,10 +187,10 @@ class UserTests {
 		assertEquals(actual, userL);
 	}
 	/**
-	 * Test method for setting last name fail
+	 * Test method for setting last name not equals
 	 */
 	@Test
-	void testSetLastNameFail() {
+	void testSetLastNameNotEquals() {
 		String userL = "Nope";
 		
 		String actual = lastName;
@@ -172,7 +201,7 @@ class UserTests {
 	 * Test method for setting user type
 	 */
 	@Test
-	void testSetUserTypePass() {
+	void testSetUserTypeEquals() {
 		String type = "Contractor";
 		
 		String actual = userType;
@@ -180,10 +209,10 @@ class UserTests {
 		assertEquals(actual, type);
 	}
 	/**
-	 * Test method for setting user type fail
+	 * Test method for setting user type not equals
 	 */
 	@Test
-	void testSetUserTypeFail() {
+	void testSetUserTypeNotEquals() {
 		String type = "Customer";
 		
 		String actual = userType;

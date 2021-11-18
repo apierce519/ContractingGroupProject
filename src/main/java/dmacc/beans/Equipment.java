@@ -33,4 +33,8 @@ public class Equipment {
 		this.name = name;
 		this.type = type;
 	}
+	
+	public String equipmentInfo() {
+		return "[id= " + id +" name= " + name +" type= " + type + "]";
+	}
 }

@@ -36,4 +36,10 @@ public class Contract {
 		this.length = length;
 		this.manpower = manpower;
 	}
+	
+	//method
+	public String contractInfo() {
+		
+		return "[id= " + id + " title= " + title + " length= " + length + " manpower= " + manpower + " workers]";
+	}
 }
