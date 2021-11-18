@@ -24,4 +24,12 @@ public class Contract {
 	String title;
 	String length;
 	int manpower;
+	
+	//constructor
+	public Contract(int id, String title, String length, int manpower) {
+		this.id = id;
+		this.title = title;
+		this.length = length;
+		this.manpower = manpower;
+	}
 }

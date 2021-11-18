@@ -23,4 +23,10 @@ public class Equipment {
 	int id;
 	String name;
 	String type;
+	
+	public Equipment(int id, String name, String type) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
 }
