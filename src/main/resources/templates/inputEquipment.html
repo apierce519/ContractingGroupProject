@@ -4,9 +4,29 @@
 <meta charset="ISO-8859-1">
 <title>Add Equipment</title>
 </head>
+<script type = "text/javascript">
+
+	function validate(){
+		
+		if(document.equipmentForm.name.value == ""){
+			alert("Please enter the name of the equipment.");
+			document.equipmentForm.name.focus();
+			return false;
+		}
+		
+		if(document.equipmentForm.type.value == ""){
+			alert("Please enter the type of equipment.");
+			document.equipmentForm.type.focus();
+			return false;
+		}
+		
+			return ( true );
+	}
+	
+</script>
 <body>
 <form th:object="${newEquipment}" 
-th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST>>
+th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" onsubmit =  "return(validate());">>
 
 Name: <input name="name" size="20" 
 th:field="*{name}"><br />
@@ -17,5 +37,6 @@ th:field="*{type}"><br />
 <input name="submit" type="submit" value="submit" />
 </form>
 <a href="viewEquipment">View Equipment</a>
+<a href="index.html">Back to Homepage</a><br>
 </body>
 </html>

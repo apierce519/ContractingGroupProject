@@ -2,11 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Add a user</title>
+<title>Add a User</title>
 </head>
+<script type = "text/javascript">
+
+	function validate(){
+		
+		if(document.userForm.username.value == ""){
+			alert("Please enter your username");
+			document.userForm.username.focus();
+			return false;
+		}
+		
+		if(document.userForm.password.value == ""){
+			alert("Please enter your password");
+			document.userForm.password.focus();
+			return false;
+		}
+		
+		if(document.userForm.firstName.value == ""){
+			alert("Please enter your First Name");
+			document.userForm.firstName.focus();
+			return false;
+		}
+		
+		if(document.userForm.lastName.value == ""){
+			alert("Please enter your Last Name");
+			document.userForm.lastName.focus();
+			return false;
+		}
+			return ( true );
+	}
+	
+</script>
 <body>
 <form th:object="${newUser}" 
-th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST>>
+th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">>
 
 Username: <input name="username" size="20" 
 th:field="*{username}"><br />
@@ -24,5 +55,6 @@ th:field="*{lastName}"><br />
 </form>
 
 <a href="viewUsers">View all Users</a>
+<a href="index.html">Back to Homepage</a><br>
 </body>
 </html>
