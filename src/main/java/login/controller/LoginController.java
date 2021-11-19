@@ -3,7 +3,7 @@
  * CIS175 - Fall 2021
  * Nov 17, 2021
  */
-package dmacc.controller;
+package login.controller;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,14 +19,10 @@ public class LoginController {
 
 	@PostMapping("/validateUser")
 	public void checkUserCredentials() {
-		/*
-		 * try { String queryString =
-		 * "SELECT * FROM user WHERE username=? AND password=?"; ResultSet rs =
-		 * Statement.executeQuery(queryString);
-		 * 
-		 * 
-		 * }
-		 */
-	}
+
+		String queryString = "SELECT * FROM user WHERE username=? AND password=?";
+		// ResultSet rs = Statement.executeQuery(queryString);
 		
+	}
+
 }
