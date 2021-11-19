@@ -15,9 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LoginSession {
 
-	public static int UID;
-	public static String UserType;
-	public static String Nickname;
+	public static int userId;
+	public static String userType;
+	public static String userName;
 	public static boolean isLoggedIn = false;
 	
 }
