@@ -31,6 +31,12 @@
 			document.userForm.lastName.focus();
 			return false;
 		}
+		
+		if(document.userForm.userType.value == ""){
+			alert("Please enter the User Type");
+			document.userForm.userType.focus();
+			return false;
+		}
 			return ( true );
 	}
 	
@@ -50,6 +56,9 @@ th:field="*{firstName}"><br />
 
 Last Name: <input name="lastName" size="20" 
 th:field="*{lastName}"><br />
+
+User Type: <input name="userType" size="20"
+th:field="*{userType}"><br />
 
 <input name="submit" type="submit" value="submit" />
 </form>
