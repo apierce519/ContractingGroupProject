@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +29,13 @@ public class Equipment {
 	int id;
 	String name;
 	String type;
-	
+	@Autowired
+	EquipmentStatus status;
+	public Equipment(int id, String name, String type) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
 	public Equipment(int id, String name, String type) {
 		this.id = id;
 		this.name = name;
@@ -36,5 +44,9 @@ public class Equipment {
 	
 	public String equipmentInfo() {
 		return "[id= " + id +" name= " + name +" type= " + type + "]";
+	}
+	
+	public String equipmentInfoStatus() {
+		return "[id= " + id +" name= " + name +" type= " + type + "] [status= " + status + "]";
 	}
 }
