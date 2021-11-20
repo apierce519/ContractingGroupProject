@@ -36,11 +36,7 @@ public class Equipment {
 		this.name = name;
 		this.type = type;
 	}
-	public Equipment(int id, String name, String type) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-	}
+	
 	
 	public String equipmentInfo() {
 		return "[id= " + id +" name= " + name +" type= " + type + "]";

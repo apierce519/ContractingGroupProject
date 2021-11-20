@@ -25,6 +25,6 @@ public class EquipmentStatus {
 	String duration;
 	
 	public String statusInfo() {
-		return "[status= " + status + " location= " + location + " duration of lease= " + duration + "]";
+		return "[status= " + status + " location= " + location + " duration of borrow= " + duration + "]";
 	}
 }
