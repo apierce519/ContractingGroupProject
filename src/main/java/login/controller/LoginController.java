@@ -9,7 +9,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import dmacc.beans.User;
+import login.beans.Operations;
 
 /**
  * @author Andrew Pierce - ajpierce1
@@ -18,10 +22,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
 	@PostMapping("/validateUser")
-	public void checkUserCredentials() {
+	public String checkUserCredentials(User u, Model model) {
 
-		String queryString = "SELECT * FROM user WHERE username=? AND password=?";
-		// ResultSet rs = Statement.executeQuery(queryString);
+		Operations operation = new Operations();
+		
+		try {
+			String username = u.getUsername();
+			String password = u.getPassword();
+			String userType = u.getUserType();
+
+			if(operation.isLogin(username, password, userType)) {
+				
+				return "index";
+			}
+		
+		}catch(Exception e) {
+			System.out.println("Something broke.");
+		}
+		
+		return "loginOrRegister";
 		
 	}
 

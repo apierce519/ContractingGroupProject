@@ -17,7 +17,7 @@ public class SQLConnection {
 		
 		String dbRoot = "jdbc:mysql://";
 		String hostName = "cis175a.cbcyamc80yze.us-east-1.rds.amazonaws.com:3306/";
-		String dbName = "contracting?useSSL=false";
+		String dbName = "contracting";
 		String dbUrl = dbRoot + hostName + dbName;
 		
 		String hostUsername = "admin";
@@ -26,7 +26,7 @@ public class SQLConnection {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = (Connection)DriverManager.getConnection(dbUrl, hostUsername,hostPassword);
 		
-		return null;
+		return con;
 		
 	}
 

@@ -18,6 +18,7 @@ import dmacc.beans.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
 import dmacc.repository.UserRepository;
+import login.beans.Operations;
 
 /**
  * @author Andrew Pierce - ajpierce1
@@ -42,15 +43,6 @@ public class WebController {
 	@Autowired
 	ContractRepository contractRepo;
 
-
-	@GetMapping("/loginOrRegister")
-	public String viewLogin(Model model) {
-		User u = new User();
-		model.addAttribute("loginCredential", u);
-		return "loginOrRegister";
-	}
-	
-	
 	//Users
 	@GetMapping("/viewUsers")
 	public String viewUsers(Model model) {
@@ -161,6 +153,38 @@ public class WebController {
 	public String editEquipment(Equipment e, Model model) {
 		equipmentRepo.save(e);
 		return viewEquipment(model);
+	}
+	
+	@GetMapping("/loginOrRegister")
+	public String viewLogin(Model model) {
+		User u = new User();
+		model.addAttribute("user", u);
+		return "loginOrRegister";
+	}
+	
+	@PostMapping("/validateUser")
+	public String checkUserCredentials(User u, Model model) {
+
+		Operations operation = new Operations();
+		
+		try {
+			String username = u.getUsername();
+			String password = u.getPassword();
+			String userType = u.getUserType();
+
+			if(operation.isLogin(username, password, userType)) {
+				
+				return "index";
+			}
+		
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			System.out.println("Something broke.");
+		}
+		
+		return "loginOrRegister";
+		
 	}
 }
 

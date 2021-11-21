@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Equipment {
-	//variables
+	// variables
 	@Id
 	@GeneratedValue
 	int id;
@@ -31,22 +31,18 @@ public class Equipment {
 	String type;
 	@Autowired
 	EquipmentStatus status;
+
 	public Equipment(int id, String name, String type) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
 	}
-	public Equipment(int id, String name, String type) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-	}
-	
+
 	public String equipmentInfo() {
-		return "[id= " + id +" name= " + name +" type= " + type + "]";
+		return "[id= " + id + " name= " + name + " type= " + type + "]";
 	}
-	
+
 	public String equipmentInfoStatus() {
-		return "[id= " + id +" name= " + name +" type= " + type + "] [status= " + status + "]";
+		return "[id= " + id + " name= " + name + " type= " + type + "] [status= " + status + "]";
 	}
 }
