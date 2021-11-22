@@ -11,7 +11,9 @@ package login.beans;
 public class Logout {
 	
 	public static void logout() {
-		LoginSession.isLoggedIn = false;
+		
+		LoginSession.logoutSession();
+		
 	}
 	
 }

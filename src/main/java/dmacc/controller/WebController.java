@@ -18,6 +18,8 @@ import dmacc.beans.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
 import dmacc.repository.UserRepository;
+import login.beans.LoginSession;
+import login.beans.Logout;
 import login.beans.Operations;
 
 /**
@@ -162,6 +164,7 @@ public class WebController {
 		return "loginOrRegister";
 	}
 	
+	@SuppressWarnings("static-access")
 	@PostMapping("/validateUser")
 	public String checkUserCredentials(User u, Model model) {
 
@@ -173,8 +176,8 @@ public class WebController {
 			String userType = u.getUserType();
 
 			if(operation.isLogin(username, password, userType)) {
-				
-				return "index";
+				System.out.println(LoginSession.printSession());
+				return "main-menu";
 			}
 		
 		}catch(Exception e) {
@@ -185,6 +188,19 @@ public class WebController {
 		
 		return "loginOrRegister";
 		
+	}
+	
+	@GetMapping("/logoutUser")
+	public String logoutUser(Model model) {
+		LoginSession.printSession();
+		LoginSession.logoutSession();
+
+		return viewLogin(model);
+	}
+	
+	@PostMapping("/printSessionInfo")
+	public void printSessionInfo() {
+		System.out.println(LoginSession.printSession());
 	}
 }
 

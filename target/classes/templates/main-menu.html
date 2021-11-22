@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Main Menu</title>
+</head>
+<body>
+
+	This is the main menu. Good job, you made the login work I guess...?
+	
+	
+	<form action="#" data-th-action="@{/printSessionInfo}" data-th-object="${model}" method="post">
+    <button type="submit" name="printSession">Print Session</button>
+</form>
+	
+	<a href = "logoutUser">Logout</a>
+
+</body>
+</html>
