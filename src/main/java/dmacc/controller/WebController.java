@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import dmacc.beans.Contract;
 import dmacc.beans.Equipment;
+import dmacc.beans.EquipmentStatus;
 import dmacc.beans.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
@@ -186,5 +187,30 @@ public class WebController {
 		return "loginOrRegister";
 		
 	}
+	
+	//Status
+	@GetMapping("/inputStatus")
+	public String addNewEquipmentStatus(Model model) {
+		Equipment e = new Equipment();
+		model.addAttribute("newEquipment", e);
+		return "inputStatus";
+	}
+	
+	@GetMapping("/editEquipmentStatus/{id}")
+	public String findStatusToUpdate(@PathVariable("id") int id, Model model) {
+		Equipment e = equipmentRepo.findById(id).orElse(null);
+		model.addAttribute("newEquipment", e);
+		return "inputStatus";
+	}
+	
+	@GetMapping("/viewEquipmentStatus")
+	public String viewEquipmentStatus(Model model) {
+		if (equipmentRepo.findAll().isEmpty()) {
+			return addNewEquipment(model);
+		}
+		model.addAttribute("newEquipment", equipmentRepo.findAll());
+		return "viewEquipmentStatus";
+	}
+	
 }
 

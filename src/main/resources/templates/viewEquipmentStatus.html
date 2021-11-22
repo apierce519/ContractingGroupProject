@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>View all Equipment</title>
+<title>Insert title here</title>
 </head>
 <body>
 <form>
@@ -12,19 +12,17 @@
 <td th:text="${currentEquipment.id}" />
  <td th:text="${currentEquipment.name}" />
  <td th:text="${currentEquipment.type}" />
+ <td th:text="${currentEquipment.status.status}" />
+ <td th:text="${currentEquipment.status.location}" />
+ <td th:text="${currentEquipment.status.duration}" />
  
- <td><a th:href="@{/editEquipment/{id}(id=${currentEquipment.id})}">Edit</a></td>
- 
- <td><a 
-	th:href="@{/deleteEquipment/{id}(id=${currentEquipment.id})}">Delete</a></td>
-	
 	<td><a 
-	th:href="@{/editEquipmentStatus/{id}(id=${currentEquipment.id})}">Add Status</a></td>
+	th:href="@{/editEquipmentStatus/{id}(id=${currentEquipment.id})}">Edit Status</a></td>
 </tr>
 </table>
 </form>
 <a href="../inputEquipment">Add new Equipment</a>
-<a href="viewEquipmentStatus">View Equipment Status</a>
+<a href="viewEquipment">View Equipment</a>
 <a href="index.html">Back to Homepage</a><br>
 </body>
 </html>
