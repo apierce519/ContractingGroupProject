@@ -17,10 +17,14 @@
  
  <td><a 
 	th:href="@{/deleteEquipment/{id}(id=${currentEquipment.id})}">Delete</a></td>
+	
+	<td><a 
+	th:href="@{/editEquipmentStatus/{id}(id=${currentEquipment.id})}">Add Status</a></td>
 </tr>
 </table>
 </form>
 <a href="../inputEquipment">Add new Equipment</a>
+<a href="viewEquipmentStatus">View Equipment Status</a>
 <a href="index.html">Back to Homepage</a><br>
 </body>
 </html>
