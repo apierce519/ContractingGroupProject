@@ -202,5 +202,29 @@ public class WebController {
 	public void printSessionInfo() {
 		System.out.println(LoginSession.printSession());
 	}
+	
+	//Status
+	@GetMapping("/inputStatus")
+	public String addNewEquipmentStatus(Model model) {
+		Equipment e = new Equipment();
+		model.addAttribute("newEquipment", e);
+		return "inputStatus";
+	}
+	
+	@GetMapping("/editEquipmentStatus/{id}")
+	public String findStatusToUpdate(@PathVariable("id") int id, Model model) {
+		Equipment e = equipmentRepo.findById(id).orElse(null);
+		model.addAttribute("newEquipment", e);
+		return "inputStatus";
+	}
+	
+	@GetMapping("/viewEquipmentStatus")
+	public String viewEquipmentStatus(Model model) {
+		if (equipmentRepo.findAll().isEmpty()) {
+			return addNewEquipment(model);
+		}
+		model.addAttribute("newEquipment", equipmentRepo.findAll());
+		return "viewEquipmentStatus";
+	}
 }
 
