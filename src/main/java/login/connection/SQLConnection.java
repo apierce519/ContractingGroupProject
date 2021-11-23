@@ -23,7 +23,7 @@ public class SQLConnection {
 		String hostUsername = "admin";
 		String hostPassword = "Shopping";
 		
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = (Connection)DriverManager.getConnection(dbUrl, hostUsername,hostPassword);
 		
 		return con;

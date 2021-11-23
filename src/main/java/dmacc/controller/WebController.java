@@ -38,14 +38,12 @@ public class WebController {
 
 	@Autowired
 	UserRepository userRepo;
-
 	@Autowired
 	EquipmentRepository equipmentRepo;
-
 	@Autowired
 	ContractRepository contractRepo;
 
-	//Users
+	// Users
 	@GetMapping("/viewUsers")
 	public String viewUsers(Model model) {
 		if (userRepo.findAll().isEmpty()) {
@@ -82,7 +80,7 @@ public class WebController {
 		return viewUsers(model);
 	}
 
-	//Contracts
+	// Contracts
 	@GetMapping("/viewContracts")
 	public String viewContracts(Model model) {
 		if (contractRepo.findAll().isEmpty()) {
@@ -119,8 +117,7 @@ public class WebController {
 		return viewContracts(model);
 	}
 
-	
-	//Equipment
+	// Equipment
 	@GetMapping("/viewEquipment")
 	public String viewEquipment(Model model) {
 		if (equipmentRepo.findAll().isEmpty()) {
@@ -143,53 +140,55 @@ public class WebController {
 		equipmentRepo.delete(e);
 		return viewEquipment(model);
 	}
-	
+
 	@GetMapping("/editEquipment/{id}")
 	public String findEquipmentToUpdate(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
 		model.addAttribute("newEquipment", e);
 		return "inputEquipment";
 	}
-	
+
 	@PostMapping("/updateEquipment/{id}")
 	public String editEquipment(Equipment e, Model model) {
 		equipmentRepo.save(e);
 		return viewEquipment(model);
 	}
-	
+
 	@GetMapping("/loginOrRegister")
 	public String viewLogin(Model model) {
 		User u = new User();
 		model.addAttribute("user", u);
 		return "loginOrRegister";
 	}
-	
+
 	@SuppressWarnings("static-access")
 	@PostMapping("/validateUser")
 	public String checkUserCredentials(User u, Model model) {
 
 		Operations operation = new Operations();
-		
+
 		try {
 			String username = u.getUsername();
 			String password = u.getPassword();
 			String userType = u.getUserType();
 
-			if(operation.isLogin(username, password, userType)) {
+			if (operation.isLogin(username, password, userType)) {
 				System.out.println(LoginSession.printSession());
-				return "main-menu";
+				return "mainMenu";
+			}else {
+				return "errorPage";
 			}
-		
-		}catch(Exception e) {
-			
+
+		} catch (Exception e) {
+
 			e.printStackTrace();
 			System.out.println("Something broke.");
 		}
-		
+
 		return "loginOrRegister";
-		
+
 	}
-	
+
 	@GetMapping("/logoutUser")
 	public String logoutUser(Model model) {
 		LoginSession.printSession();
@@ -197,27 +196,27 @@ public class WebController {
 
 		return viewLogin(model);
 	}
-	
+
 	@PostMapping("/printSessionInfo")
 	public void printSessionInfo() {
 		System.out.println(LoginSession.printSession());
 	}
-	
-	//Status
+
+	// Status
 	@GetMapping("/inputStatus")
 	public String addNewEquipmentStatus(Model model) {
 		Equipment e = new Equipment();
 		model.addAttribute("newEquipment", e);
 		return "inputStatus";
 	}
-	
+
 	@GetMapping("/editEquipmentStatus/{id}")
 	public String findStatusToUpdate(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
 		model.addAttribute("newEquipment", e);
 		return "inputStatus";
 	}
-	
+
 	@GetMapping("/viewEquipmentStatus")
 	public String viewEquipmentStatus(Model model) {
 		if (equipmentRepo.findAll().isEmpty()) {
@@ -227,4 +226,3 @@ public class WebController {
 		return "viewEquipmentStatus";
 	}
 }
-
