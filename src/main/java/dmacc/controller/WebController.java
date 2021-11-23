@@ -174,6 +174,7 @@ public class WebController {
 
 			if (operation.isLogin(username, password, userType)) {
 				System.out.println(LoginSession.printSession());
+				model.addAttribute("Operation", operation);
 				return "mainMenu";
 			}else {
 				return "errorPage";
@@ -197,7 +198,7 @@ public class WebController {
 		return viewLogin(model);
 	}
 
-	@PostMapping("/printSessionInfo")
+	@GetMapping("/printSessionInfo")
 	public void printSessionInfo() {
 		System.out.println(LoginSession.printSession());
 	}
