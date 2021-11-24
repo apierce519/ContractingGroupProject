@@ -6,7 +6,7 @@
 </head>
 <body>
 <form th:object="${newEquipment}" 
-th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" >>
+th:action="@{/updateEquipmentStatus/{id}(id=${newEquipment.id})}" method=POST >>
 
 Name: <input name="name" size="20" th:field="*{name}"><br />
 

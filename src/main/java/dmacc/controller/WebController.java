@@ -226,4 +226,10 @@ public class WebController {
 		model.addAttribute("newEquipment", equipmentRepo.findAll());
 		return "viewEquipmentStatus";
 	}
+	
+	@PostMapping("/updateEquipmentStatus/{id}")
+	public String editEquipmentStatus(Equipment e, Model model) {
+		equipmentRepo.save(e);
+		return viewEquipmentStatus(model);
+	}
 }
