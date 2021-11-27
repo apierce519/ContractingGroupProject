@@ -26,7 +26,6 @@ public class LoginSession {
 		userType = null;
 		userName = null;
 		isLoggedIn = false;
-		System.out.println(printSession());
 		System.out.println("Session Logged Out");
 		System.out.println(printSession());
 	}
