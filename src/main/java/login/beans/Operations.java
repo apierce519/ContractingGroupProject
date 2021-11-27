@@ -12,17 +12,17 @@ import java.sql.ResultSetMetaData;
 
 import login.connection.SQLConnection;
 
-import org.springframework.ui.Model;
-
 /**
  * @author Andrew Pierce - ajpierce1
  */
 public class Operations {
 
+	public static LoginSession loginSession = new LoginSession();
+
 	public static boolean isLogin(String username, String password, String userType) {
 
 		try {
-			Connection myCon = SQLConnection.getConnection();
+			Connection myCon = SQLConnection.getLocalConnection();
 
 			String mySqlQuery = "SELECT id, user_type, username FROM user WHERE username = '" + username
 					+ "' AND password = '" + password + "' AND user_type = '" + userType + "'";
@@ -36,25 +36,24 @@ public class Operations {
 			while (resultSet.next()) {
 				for (int i = 1; i <= columnsNumber; i++) {
 					if (i > 1)
-						System.out.print(",  ");
+					System.out.print(",  ");
 					String columnValue = resultSet.getString(i);
 					System.out.print(columnValue + " " + rsmd.getColumnName(i));
 					System.out.println();
 				}
-				
+
 				System.out.println("Result Set Data printed.");
-				
-				LoginSession.userId = resultSet.getInt("id");
-				LoginSession.userName = resultSet.getString("username");
-				LoginSession.userType = resultSet.getString("user_type");
-				LoginSession.isLoggedIn = true;
-				
+
+				loginSession.setUserId(resultSet.getInt("id"));
+				loginSession.setUserName(resultSet.getString("username"));
+				loginSession.setUserType(resultSet.getString("user_type"));
+				loginSession.setLoggedIn(true);
+
 				System.out.println("Login Session set.");
-				System.out.println(LoginSession.userId + " : " + LoginSession.isLoggedIn + " : " + LoginSession.userName + " : " + LoginSession.userType);
-				
+				System.out.println(loginSession.printSession());
+
 				return true;
 			}
-
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,7 +12,7 @@ public class Logout {
 	
 	public static void logout() {
 		
-		LoginSession.logoutSession();
+		//LoginSession.logoutSession();
 		
 	}
 	

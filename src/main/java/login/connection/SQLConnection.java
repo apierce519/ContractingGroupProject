@@ -14,20 +14,29 @@ import java.sql.DriverManager;
 public class SQLConnection {
 	
 	public static Connection getConnection() throws Exception{
+
+		String dbUrl = "jdbc:mysql://cis175a.cbcyamc80yze.us-east-1.rds.amazonaws.com:3306/contracting?useSSL=false";
 		
-		String dbRoot = "jdbc:mysql://";
-		String hostName = "cis175a.cbcyamc80yze.us-east-1.rds.amazonaws.com:3306/";
-		String dbName = "contracting";
-		String dbUrl = dbRoot + hostName + dbName;
-		
-		String hostUsername = "admin";
-		String hostPassword = "Shopping";
+		String dbUsername = "admin";
+		String dbPassword = "Shopping";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = (Connection)DriverManager.getConnection(dbUrl, hostUsername,hostPassword);
+		Connection con = (Connection)DriverManager.getConnection(dbUrl, dbUsername,dbPassword);
 		
 		return con;
 		
+	}
+	
+	public static Connection getLocalConnection() throws Exception{
+		String dbUrl = "jdbc:mysql://localhost:3306/contractingproject?useSSL=false";
+		
+		String dbUsername = "root";
+		String dbPassword = "HeavyoldBarn53*)";
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = (Connection)DriverManager.getConnection(dbUrl, dbUsername,dbPassword);
+		
+		return con;
 	}
 
 }

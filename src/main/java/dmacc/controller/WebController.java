@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,8 +19,6 @@ import dmacc.beans.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
 import dmacc.repository.UserRepository;
-import login.beans.LoginSession;
-import login.beans.Logout;
 import login.beans.Operations;
 
 /**
@@ -177,15 +176,16 @@ public class WebController {
 		model.addAttribute("newEquipment", equipmentRepo.findAll());
 		return "viewEquipmentStatus";
 	}
-	
+
 	@PostMapping("/updateEquipmentStatus/{id}")
 	public String editEquipmentStatus(Equipment e, Model model) {
 		equipmentRepo.save(e);
 		return viewEquipmentStatus(model);
 	}
-/*
- * Login Methods
- */
+
+	/*
+	 * Login Methods
+	 */
 	@GetMapping("/loginOrRegister")
 	public String viewLogin(Model model) {
 		User u = new User();
@@ -195,7 +195,7 @@ public class WebController {
 
 	@SuppressWarnings("static-access")
 	@PostMapping("/validateUser")
-	public String checkUserCredentials(User u, Model model) {
+	public String checkUserCredentials(User u) {
 
 		Operations operation = new Operations();
 
@@ -205,10 +205,10 @@ public class WebController {
 			String userType = u.getUserType();
 
 			if (operation.isLogin(username, password, userType)) {
-				System.out.println(LoginSession.printSession());
-				model.addAttribute("Operation", operation);
-				return "mainMenu";
-			}else {
+		//		model.addAttribute("Operation", operation);
+				return chooseMenu(operation);
+			} else {
+				System.out.println("checkUserCredentials()");
 				return "errorPage";
 			}
 
@@ -222,27 +222,27 @@ public class WebController {
 
 	}
 	
-	@GetMapping
-	public String sendToMainMenu(Model model) {
-		
+	public Operations pullModelOperation(Model model) {
+		Operations operation = (Operations) model.getAttribute("Operation");
+		return operation;
 	}
 	
-	public String checkUserType() {
-		String usertype = login.beans.LoginSession.userType;
-		return usertype;
+	@GetMapping("/mainMenu")
+	public String goToMainMenu(Model model) {
+		return chooseMenu(pullModelOperation(model)); 
 	}
 
-	@GetMapping("/logoutUser")
-	public String logoutUser(Model model) {
-		LoginSession.printSession();
-		LoginSession.logoutSession();
-
-		return viewLogin(model);
-	}
-
-	@GetMapping("/printSessionInfo")
-	public void printSessionInfo() {
-		System.out.println(LoginSession.printSession());
+	@SuppressWarnings("static-access")
+	public String chooseMenu(Operations operation) {
+		System.out.println(operation.loginSession.printSession());
+		if (operation.loginSession.getUserType().equals("Administrator")) {
+			return "mainMenu";
+		}else if(operation.loginSession.getUserType().equals("Customer")) {
+			return "customerMainMenu";
+		}else {
+			System.out.println("sendToMainMenu()");
+			return "errorPage";
+		}
 	}
 
 }
