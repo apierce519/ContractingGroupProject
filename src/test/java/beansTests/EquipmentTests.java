@@ -18,6 +18,7 @@ import dmacc.beans.Equipment;
  */
 class EquipmentTests {
 	//variables
+	private Equipment a = new Equipment();
 	private int id = 1;
 	private String name = "bobcat";
 	private String type = "heavy machinery";
@@ -100,70 +101,69 @@ class EquipmentTests {
 	 * Test method for set id equals
 	 */
 	@Test
-	void testSetIdEquals() {
+	void testGetAndSetIdEquals() {
 		int equipId = 1;
-		int actual = id;
+		a.setId(id);
 		
-		assertEquals(actual, equipId);
+		assertEquals(a.getId(), equipId);
 	}
 	
 	/**
 	 * Test method for set id doesnt equal
 	 */
 	@Test
-	void testSetIdNotEquals() {
+	void testGetAndSetIdNotEquals() {
 		int equipId = 2;
-		int actual = id;
+		a.setId(id);
 		
-		assertNotEquals(actual, equipId);
+		assertNotEquals(a.getId(), equipId);
 	}
 
 	/**
 	 * Test method for name equals
 	 */
 	@Test
-	void testSetNameEquals() {
+	void testGetAndSetNameEquals() {
 		String eName = "bobcat";
+		a.setName(name);
 		
-		String actual = name;
-		
-		assertEquals(actual,eName);
+		assertEquals(a.getName(),eName);
 	}
 	
 	/**
 	 * Test method for name doesn't equal
 	 */
 	@Test
-	void testSetNameNotEquals() {
+	void testGetAndSetNameNotEquals() {
 		String eName = "hammer";
 		
-		String actual = name;
+		a.setName(name);
 		
-		assertNotEquals(actual,eName);
+		assertNotEquals(a.getName(),eName);
 	}
 
 	/**
 	 * Test method for type
 	 */
 	@Test
-	void testSetTypeEquals() {
+	void testGetAndSetTypeEquals() {
 		String eType = "heavy machinery";
 		
-		String actual = type;
+		a.setType(type);
 		
-		assertEquals(actual,eType);
+		assertEquals(a.getType(),eType);
 	}
 	
 	/**
 	 * Test method for type
 	 */
 	@Test
-	void testSetTypeNotEquals() {
+	void testGetAndSetTypeNotEquals() {
 		String eType = "electronic";
 		
-		String actual = type;
+		a.setType(type);
 		
-		assertNotEquals(actual,eType);
+		assertNotEquals(a.getType(),eType);
 	}
 	
 	/**

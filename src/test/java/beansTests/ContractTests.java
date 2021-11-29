@@ -17,6 +17,7 @@ import dmacc.beans.Contract;
  */
 class ContractTests {
 	//variables
+        private Contract a = new Contract();
 		private int id = 1;
 		private String title = "Bathroom Remodel";
 		private String length = "2 days";
@@ -65,12 +66,12 @@ void setContractGetAndSetTestNotEquals() {
 	 * Test method for id equals
 	 */
 	@Test
-	void testSetIdEquals() {
+	void testGetAndSetIdEquals() {
 		int cId = 1;
 		
-		int actual = id;
+		a.setId(id);
 		
-		assertEquals(actual, cId);
+		assertEquals(a.getId(), cId);
 		
 	}
 	
@@ -78,12 +79,12 @@ void setContractGetAndSetTestNotEquals() {
 	 * Test method for id doesn't equal
 	 */
 	@Test
-	void testSetIdNotEquals() {
+	void testGetAndSetIdNotEquals() {
 		int cId = 5;
 		
-		int actual = id;
+		a.setId(id);
 		
-		assertNotEquals(actual, cId);
+		assertNotEquals(a.getId(), cId);
 		
 	}
 
@@ -91,48 +92,48 @@ void setContractGetAndSetTestNotEquals() {
 	 * Test method for title
 	 */
 	@Test
-	void testSetTitleEquals() {
+	void testGetAndSetTitleEquals() {
 		String cT = "Bathroom Remodel";
 		
-	    String actual = title;
+	    a.setTitle(title);
 	    
-	    assertEquals(actual,cT);
+	    assertEquals(a.getTitle(),cT);
 	}
 	
 	/**
 	 * Test method for title doesn't equal
 	 */
 	@Test
-	void testSetTitleNotEquals() {
+	void testGetANdSetTitleNotEquals() {
 		String cT = "Back Porch Construction";
 		
-	    String actual = title;
+	    a.setTitle(title);
 	    
-	    assertNotEquals(actual,cT);
+	    assertNotEquals(a.getTitle(),cT);
 	}
 
 	/**
 	 * Test method for length
 	 */
 	@Test
-	void testSetLengthEquals() {
+	void testGetAndSetLengthEquals() {
 		String cL = "2 days";
 		
-		String actual = length;
+		a.setLength(length);
 		
-		assertEquals(actual, cL);
+		assertEquals(a.getLength(), cL);
 	}
 	
 	/**
 	 * Test method for length not equal
 	 */
 	@Test
-	void testSetLengthNotEquals() {
+	void testGetAndSetLengthNotEquals() {
 		String cL = "15 days";
 		
-		String actual = length;
+		a.setLength(length);
 		
-		assertNotEquals(actual, cL);
+		assertNotEquals(a.getLength(), cL);
 	}
 
 
@@ -140,24 +141,24 @@ void setContractGetAndSetTestNotEquals() {
 	 * Test method for set manpower
 	 */
 	@Test
-	void testSetManpowerEquals() {
+	void testGetAndSetManpowerEquals() {
 		int mP = 2;
 		
-		int actual = manpower;
+		a.setManpower(manpower);
 		
-		assertEquals(actual, mP);
+		assertEquals(a.getManpower(), mP);
 	}
 	
 	/**
 	 * Test method for set manpower not equal
 	 */
 	@Test
-	void testSetManpowerNotEquals() {
+	void testGetAndSetManpowerNotEquals() {
 		int mP = 8;
 		
-		int actual = manpower;
+		a.setManpower(manpower);
 		
-		assertNotEquals(actual, mP);
+		assertNotEquals(a.getManpower(), mP);
 	}
 	
 	
