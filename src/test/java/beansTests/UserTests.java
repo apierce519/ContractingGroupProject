@@ -19,6 +19,7 @@ import dmacc.beans.User;
 class UserTests {
 
 	//variables
+	private User a = new User();
 	private int id = 4;
 	private String username = "user123";
 	private String password = "password";
@@ -82,35 +83,35 @@ class UserTests {
 	 */
 	
 	@Test
-	void testSetIdEquals() {
+	void testGetAndSetIdEquals() {
 		int userId = 4;
 		
-		int actual = id;
+		a.setId(id);
 		
-		assertEquals(actual, userId);
+		assertEquals(a.getId(), userId);
 	}
 	/**
 	 * Test method for set id doesn't match
 	 */
 	@Test
-	void testSetIdNotEquals() {
+	void testGetAndSetIdNotEquals() {
 		int userId = 5;
 		
-		int actual = id;
+		a.setId(id);
 		
-		assertNotEquals(actual, userId);
+		assertNotEquals(a.getId(), userId);
 	}
 
 	/**
 	 * Test method for setting user name
 	 */
 	@Test
-	void testSetUsernameEquals() {
+	void testGetAndSetUsernameEquals() {
 		String userN = "user123";
 		
-		String actual = username;
+		a.setUsername(username);
 		
-		assertEquals(actual, userN);
+		assertEquals(a.getUsername(), userN);
 	}
 	/**
 	 * Test method for setting user name
@@ -120,104 +121,104 @@ class UserTests {
 	 * Test method for setting user name doesn't match
 	 */
 	@Test
-	void testSetUsernameNotEquals() {
+	void testGetAndSetUsernameNotEquals() {
 		String userN = "fail";
 		
-		String actual = username;
+		a.setUsername(username);
 		
-		assertNotEquals(actual, userN);
+		assertNotEquals(a.getUsername(), userN);
 	}
 
 	/**
 	 * Test method for setting password
 	 */
 	@Test
-	void testSetPasswordEquals() {
+	void testGetAndSetPasswordEquals() {
 		String userP = "password";
 		
-		String actual = password;
+		a.setPassword(password);
 		
-		assertEquals(actual, userP);
+		assertEquals(a.getPassword(), userP);
 	}
 	/**
 	 * Test method for setting password doesn't match
 	 */
 	@Test
-	void testSetPasswordNotEquals() {
+	void testGetAndSetPasswordNotEquals() {
 		String userP = "denied";
 		
-		String actual = password;
+		a.setPassword(password);
 		
-		assertNotEquals(actual, userP);
+		assertNotEquals(a.getPassword(), userP);
 	}
 
 	/**
 	 * Test method for setting first name
 	 */
 	@Test
-	void testSetFirstNameEquals() {
+	void testGetAndSetFirstNameEquals() {
 		String userF = "Test";
 		
-		String actual = firstName;
+		a.setFirstName(firstName);
 		
-		assertEquals(actual,userF);
+		assertEquals(a.getFirstName(),userF);
 	}
 	
 	/**
 	 * Test method for setting first name doesn't match
 	 */
 	@Test
-	void testSetFirstNameNotEquals() {
+	void testGetAndSetFirstNameNotEquals() {
 		String userF = "First";
 		
-		String actual = firstName;
+		a.setFirstName(firstName);
 		
-		assertNotEquals(actual,userF);
+		assertNotEquals(a.getFirstName(),userF);
 	}
 
 	/**
 	 * Test method for setting last name
 	 */
 	@Test
-	void testSetLastNameEquals() {
+	void testGetAndSetLastNameEquals() {
 		String userL = "Case";
 		
-		String actual = lastName;
+		a.setLastName(lastName);
 		
-		assertEquals(actual, userL);
+		assertEquals(a.getLastName(), userL);
 	}
 	/**
 	 * Test method for setting last name not equals
 	 */
 	@Test
-	void testSetLastNameNotEquals() {
+	void testGetAndSetLastNameNotEquals() {
 		String userL = "Nope";
 		
-		String actual = lastName;
+		a.setLastName(lastName);
 		
-		assertNotEquals(actual, userL);
+		assertNotEquals(a.getLastName(), userL);
 	}
 	/**
 	 * Test method for setting user type
 	 */
 	@Test
-	void testSetUserTypeEquals() {
+	void testGetAndSetUserTypeEquals() {
 		String type = "Contractor";
 		
-		String actual = userType;
+		a.setUserType(userType);
 		
-		assertEquals(actual, type);
+		assertEquals(a.getUserType(), type);
 	}
 	/**
 	 * Test method for setting user type not equals
 	 */
 	@Test
-	void testSetUserTypeNotEquals() {
+	void testGetAndSetUserTypeNotEquals() {
 		String type = "Customer";
 		
-		String actual = userType;
+		a.setUserType(userType);
 		
-		assertNotEquals(actual, type);
+		assertNotEquals(a.getUserType(), type);
 	}
 
 	/**
