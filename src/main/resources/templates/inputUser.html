@@ -42,6 +42,7 @@
 	
 </script>
 <body>
+<h1>Add a User</h1>
 <form th:object="${newUser}" 
 th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">>
 
