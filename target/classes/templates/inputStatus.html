@@ -4,9 +4,42 @@
 <meta charset="ISO-8859-1">
 <title>Add Equipment Status </title>
 </head>
+<script type = "text/javascript">
+
+	function validate(){
+		
+		if(document.equipmentForm.name.value == ""){
+			alert("Please enter the name of the equipment.");
+			document.equipmentForm.name.focus();
+			return false;
+		}
+		
+		if(document.equipmentForm.type.value == ""){
+			alert("Please enter the type of equipment.");
+			document.equipmentForm.type.focus();
+			return false;
+		}
+		
+		if(document.equipmentForm.status.value == ""){
+			alert("Please enter the status of the equipment.");
+			document.equipmentForm.status.focus();
+			return false;
+		}
+		
+		if(document.equipmentForm.location.value == ""){
+			alert("Please enter the current location of the equipment.");
+			document.equipmentForm.location.focus();
+			return false;
+		}
+			return ( true );
+			
+	}
+	
+</script>
 <body>
+<h1>Add a Status to the Equipment</h1>
 <form th:object="${newEquipment}" 
-th:action="@{/updateEquipmentStatus/{id}(id=${newEquipment.id})}" method=POST >>
+th:action="@{/updateEquipmentStatus/{id}(id=${newEquipment.id})}" method=POST name= "equipmentForm" onsubmit =  "return(validate());">>
 
 Name: <input name="name" size="20" th:field="*{name}"><br />
 

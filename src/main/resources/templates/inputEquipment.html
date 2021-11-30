@@ -25,6 +25,7 @@
 	
 </script>
 <body>
+<h1>Add Equipment</h1>
 <form th:object="${newEquipment}" 
 th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" onsubmit =  "return(validate());">>
 
