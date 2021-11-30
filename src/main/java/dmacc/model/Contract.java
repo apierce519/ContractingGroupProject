@@ -4,7 +4,7 @@
  *Nov 13, 2021
  */
 
-package dmacc.beans;
+package dmacc.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

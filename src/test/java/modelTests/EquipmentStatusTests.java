@@ -4,13 +4,13 @@
  *Nov 19, 2021
  */
 
-package beansTests;
+package modelTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import dmacc.beans.EquipmentStatus;
+import dmacc.model.EquipmentStatus;
 
 /**
  * @author cmboe

@@ -1,9 +1,9 @@
-package beansTests;
+package modelTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import dmacc.beans.Contract;
+import dmacc.model.Contract;
 
 /**
  *@author -Colby Boell -cmboell

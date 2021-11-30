@@ -4,7 +4,7 @@
  *Nov 19, 2021
  */
 
-package dmacc.beans;
+package dmacc.model;
 
 import javax.persistence.Embeddable;
 

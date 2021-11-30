@@ -22,7 +22,8 @@
  <td th:text="${currentUser.password}" />
  <td th:text="${currentUser.firstName}" />
  <td th:text="${currentUser.lastName}" />
- <td th:text="${currentUser.userType}" />
+ <td th:text="${currentUser.active}"/>
+ <td th:text="${currentUser.roles}" />
  
  <td><a th:href="@{/editUser/{id}(id=${currentUser.id})}">Edit</a></td>
  
@@ -31,7 +32,7 @@
 </tr>
 </table>
 </form>
-<a href="../inputUser">Add a new User</a>
-<a th:href="@{/mainMenu}">Back to Homepage</a><br>
+<a href="inputUser">Add a new User</a>
+<a href="mainMenu">Back to Homepage</a><br>
 </body>
 </html>

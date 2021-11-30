@@ -8,9 +8,9 @@ package dmacc.controller;
 
 import org.springframework.context.annotation.Bean;
 
-import dmacc.beans.Contract;
-import dmacc.beans.Equipment;
-import dmacc.beans.User;
+import dmacc.model.Contract;
+import dmacc.model.Equipment;
+import dmacc.model.User;
 
 /**
  * @author cmboe

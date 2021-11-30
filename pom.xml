@@ -5,18 +5,26 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.6</version>
+		<version>2.6.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>GroupProject</groupId>
-	<artifactId>ContractingGroupProject</artifactId>
+	<groupId>com</groupId>
+	<artifactId>ContractingGroupProject-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ContractingGroupProject</name>
-	<description>A contracting business system where they can schedule appointments, the time needed to complete the workload, check in and out equipment needed for the project they are working on, as well as the number of employees (including the names of each employee) that are sent out on the job.</description>
+	<name>ContractingGroupProject-1</name>
+	<description>Group final for Java II</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -24,6 +32,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
 
 		<dependency>
@@ -48,8 +60,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

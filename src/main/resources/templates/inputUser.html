@@ -57,11 +57,11 @@ th:field="*{firstName}"><br />
 Last Name: <input name="lastName" size="20" 
 th:field="*{lastName}"><br />
 
-User Type: <select name = "userType" th:field = *{userType}>
-				<option value = "Administrator">Administrator</option>
-				<option value = "Customer">Customer</option>
+User Type: <select name = "roles" th:field = "*{roles}">
+				<option value = "ROLE_ADMIN">Administrator</option>
+				<option value = "ROLE_USER">Customer</option>
 			</select>
-
+Is active:<input type="checkbox" name="active" th:checked="*{active}" />
 <input name="submit" type="submit" value="submit" />
 </form>
 

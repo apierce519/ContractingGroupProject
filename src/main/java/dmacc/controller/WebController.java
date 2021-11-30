@@ -6,20 +6,24 @@
 package dmacc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import dmacc.beans.Contract;
-import dmacc.beans.Equipment;
-import dmacc.beans.User;
+import dmacc.model.Contract;
+import dmacc.model.Equipment;
+import dmacc.model.User;
 import dmacc.repository.ContractRepository;
 import dmacc.repository.EquipmentRepository;
 import dmacc.repository.UserRepository;
-import login.beans.Operations;
 
 /**
  * @author Andrew Pierce - ajpierce1
@@ -33,6 +37,7 @@ import login.beans.Operations;
  */
 
 @Controller
+@RequestMapping("/")
 public class WebController {
 
 	@Autowired
@@ -42,8 +47,21 @@ public class WebController {
 	@Autowired
 	ContractRepository contractRepo;
 
+	@Secured("ROLE_ADMIN")
+	@GetMapping({ "/mainMenu", "/admin/mainMenu" })
+	public String mainMenu() {
+		return "mainMenu";
+	}
+
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping({ "/customerMenu", "/user/customerMenu" })
+	public String customerMenu() {
+		return "customerMenu";
+	}
+
 	// Users
-	@GetMapping("/viewUsers")
+	// @Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping({ "/viewUsers", "/admin/viewUsers" })
 	public String viewUsers(Model model) {
 		if (userRepo.findAll().isEmpty()) {
 			return addNewUser(model);
@@ -52,7 +70,8 @@ public class WebController {
 		return "viewUsers";
 	}
 
-	@GetMapping("/inputUser")
+	// @Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping({ "/inputUser", "/admin/inputUser" })
 	private String addNewUser(Model model) {
 		User u = new User();
 		model.addAttribute("newUser", u);
@@ -80,6 +99,7 @@ public class WebController {
 	}
 
 	// Contracts
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/viewContracts")
 	public String viewContracts(Model model) {
 		if (contractRepo.findAll().isEmpty()) {
@@ -117,6 +137,7 @@ public class WebController {
 	}
 
 	// Equipment
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/viewEquipment")
 	public String viewEquipment(Model model) {
 		if (equipmentRepo.findAll().isEmpty()) {
@@ -181,68 +202,6 @@ public class WebController {
 	public String editEquipmentStatus(Equipment e, Model model) {
 		equipmentRepo.save(e);
 		return viewEquipmentStatus(model);
-	}
-
-	/*
-	 * Login Methods
-	 */
-	@GetMapping("/loginOrRegister")
-	public String viewLogin(Model model) {
-		User u = new User();
-		model.addAttribute("user", u);
-		return "loginOrRegister";
-	}
-
-	@SuppressWarnings("static-access")
-	@PostMapping("/validateUser")
-	public String checkUserCredentials(User u) {
-
-		Operations operation = new Operations();
-
-		try {
-			String username = u.getUsername();
-			String password = u.getPassword();
-			String userType = u.getUserType();
-
-			if (operation.isLogin(username, password, userType)) {
-		//		model.addAttribute("Operation", operation);
-				return chooseMenu(operation);
-			} else {
-				System.out.println("checkUserCredentials()");
-				return "errorPage";
-			}
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			System.out.println("Something broke.");
-		}
-
-		return "loginOrRegister";
-
-	}
-	
-	public Operations pullModelOperation(Model model) {
-		Operations operation = (Operations) model.getAttribute("Operation");
-		return operation;
-	}
-	
-	@GetMapping("/mainMenu")
-	public String goToMainMenu(Model model) {
-		return chooseMenu(pullModelOperation(model)); 
-	}
-
-	@SuppressWarnings("static-access")
-	public String chooseMenu(Operations operation) {
-		System.out.println(operation.loginSession.printSession());
-		if (operation.loginSession.getUserType().equals("Administrator")) {
-			return "mainMenu";
-		}else if(operation.loginSession.getUserType().equals("Customer")) {
-			return "customerMainMenu";
-		}else {
-			System.out.println("sendToMainMenu()");
-			return "errorPage";
-		}
 	}
 
 }
