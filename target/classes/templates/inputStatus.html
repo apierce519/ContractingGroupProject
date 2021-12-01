@@ -20,17 +20,6 @@
 			return false;
 		}
 		
-		if(document.equipmentForm.status.value == ""){
-			alert("Please enter the status of the equipment.");
-			document.equipmentForm.status.focus();
-			return false;
-		}
-		
-		if(document.equipmentForm.location.value == ""){
-			alert("Please enter the current location of the equipment.");
-			document.equipmentForm.location.focus();
-			return false;
-		}
 			return ( true );
 			
 	}
@@ -39,17 +28,17 @@
 <body>
 <h1>Add a Status to the Equipment</h1>
 <form th:object="${newEquipment}" 
-th:action="@{/updateEquipmentStatus/{id}(id=${newEquipment.id})}" method=POST name= "equipmentForm" onsubmit =  "return(validate());">>
+th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST name= "equipmentForm" onsubmit =  "return(validate());">>
 
 Name: <input name="name" size="20" th:field="*{name}"><br />
 
 Type: <input name="type" size="20" th:field="*{type}"><br />
 
-Status: <input name="status" size="20" th:field="*{status.status}"><br />
+Status: <input name="status.status" size="20" th:field="*{status.status}"><br />
 
-Location: <input name="location" size="20" th:field="*{status.location}"><br />
+Location: <input name="status.location" size="20" th:field="*{status.location}"><br />
 
-Duration: <input name="duration" size="20" th:field="*{status.duration}"><br />
+Duration: <input name="status.duration" size="20" th:field="*{status.duration}"><br />
 
 
 <input name="submit" type="submit" value="submit" />
