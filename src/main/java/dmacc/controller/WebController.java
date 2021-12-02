@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dmacc.model.Contract;
+import dmacc.model.Employee;
 import dmacc.model.Equipment;
 import dmacc.model.User;
 import dmacc.repository.ContractRepository;
+import dmacc.repository.EmployeeRepository;
 import dmacc.repository.EquipmentRepository;
 import dmacc.repository.UserRepository;
 
@@ -46,7 +48,9 @@ public class WebController {
 	EquipmentRepository equipmentRepo;
 	@Autowired
 	ContractRepository contractRepo;
-
+	@Autowired
+	EmployeeRepository employeeRepo;
+	
 	@Secured("ROLE_ADMIN")
 	@GetMapping({ "/mainMenu", "/admin/mainMenu" })
 	public String mainMenu() {
@@ -203,5 +207,35 @@ public class WebController {
 		equipmentRepo.save(e);
 		return viewEquipmentStatus(model);
 	}
+	
+	@GetMapping("/inputEmployee")
+	public String addNewEmployee(Model model) {
+		Employee e = new Employee();
+		model.addAttribute("newEmployee", e);
+		return "inputEmployee";
+	}
+
+	@GetMapping("/editEmployee/{id}")
+	public String findEmployeeToUpdate(@PathVariable("id") int id, Model model) {
+		Employee e = employeeRepo.findById(id).orElse(null);
+		model.addAttribute("newEmployee", e);
+		return "inputEmployee";
+	}
+
+	@GetMapping("/viewEmployees")
+	public String viewEmployee(Model model) {
+		if (employeeRepo.findAll().isEmpty()) {
+			return addNewEmployee(model);
+		}
+		model.addAttribute("newEmployee", employeeRepo.findAll());
+		return "viewEmployees";
+	}
+
+	@PostMapping("/updateEmployee/{id}")
+	public String editEmployee(Employee e, Model model) {
+		employeeRepo.save(e);
+		return viewEmployee(model);
+	}
+	
 
 }
