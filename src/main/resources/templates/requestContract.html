@@ -2,8 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Add a Contract</title>
+<title>Request a new Contract</title>
 </head>
+<body>
+<h1>How can we help?</h1>
+<h2>Our employees will do pretty much anything for money!</h2>
+<p>
+
+
+</p>
 <script type = "text/javascript">
 
 	function validate(){
@@ -34,27 +41,25 @@
 <body>
 <h1>Add a Contract</h1>
 <form th:object="${newContract}" 
-th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST name= "contractForm" onsubmit =  "return(validate());">>
+th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST name= "contractForm" onsubmit =  "return(validate());">
 
-Title: <input name="title" size="20" 
-th:field="*{title}"><br />
+Title:<br>
+<input name="title" size="20" th:field="*{title}"><br /><br>
 
-Length: <input name="length" size="20" 
-th:field="*{length}"><br />
+Length:<br>
+<input name="length" size="20" th:field="*{length}"><br /><br>
 
-Number of workers: <input name="manpower" size="20" 
-th:field="*{manpower}"><br />
+Number of workers:<br>
+<input name="manpower" size="20" th:field="*{manpower}"><br /><br>
 
-Author: <input disabled name="author" size="20" 
-th:field="*{author}"><br />
-
-Customer note box<br>
+Put any notes you think are relevant for us to know in this box!<br>
 <TEXTAREA Name="notes" ROWS="5" COLS="50" th:field = "*{notes}"></TEXTAREA>
-<br>
-
+<br><br>
 <input name="submit" type="submit" value="submit" />
 </form>
+
+
 <a href="viewContracts">View all Contracts</a><br>
-<a href="index.html">Back to Homepage</a><br>
+<a href="index.html">Back to Main Menu</a><br>
 </body>
 </html>

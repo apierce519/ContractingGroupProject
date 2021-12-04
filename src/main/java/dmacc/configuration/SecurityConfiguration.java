@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SuppressWarnings("deprecation")
 @EnableWebSecurity
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled=true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -33,13 +33,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// Set your configuration on the auth object
 
 		auth.userDetailsService(userDetailsService);
-		
+
 //		auth.jdbcAuthentication().dataSource(dataSource);
 //		.usersByUsernameQuery(default)
 //		.authoritiesByUsernameQuery();
@@ -56,6 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/user").hasAnyRole("ADMIN", "USER")
 				.antMatchers("/").permitAll().and().formLogin();
+
+		//http.logout().logoutUrl("/").logoutSuccessUrl("/");
 	}
 
 }

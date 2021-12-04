@@ -6,6 +6,7 @@
 package dmacc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,8 +61,17 @@ public class ContractController {
 	}
 
 	@PostMapping("/updateContract/{id}")
-	public String editContract(Contract c, Model model) {
+	public String editContract(Contract c, Model model, Authentication auth) {
+		c.setAuthor(auth.getName());
 		contractRepo.save(c);
 		return viewContracts(model);
+	}
+
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping("/submitJobRequest")
+	public String requestContract(Model model) {
+		Contract c = new Contract();
+		model.addAttribute("newContract", c);
+		return "requestContract";
 	}
 }

@@ -21,25 +21,28 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Contract {
-	//variables
+	// variables
 	@Id
 	@GeneratedValue
 	int id;
 	String title;
 	String length;
 	int manpower;
-	
-	//constructor
-	public Contract(int id, String title, String length, int manpower) {
+	String author;
+	String notes;
+
+	// constructor
+	public Contract(int id, String title, String length, int manpower, String notes) {
 		this.id = id;
 		this.title = title;
 		this.length = length;
 		this.manpower = manpower;
+		this.notes = notes;
 	}
-	
-	//method
+
+	// method
 	public String contractInfo() {
-		
+
 		return "[id= " + id + " title= " + title + " length= " + length + " manpower= " + manpower + " workers]";
 	}
 }
