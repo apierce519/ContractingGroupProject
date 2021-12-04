@@ -184,6 +184,5 @@ class UserTest {
 		
 		assertNotEquals(a.getRoles(),expected);
 	}
-	
 
 }
