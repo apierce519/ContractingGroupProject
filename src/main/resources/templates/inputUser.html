@@ -62,7 +62,7 @@ User Type: <select name = "roles" th:field = "*{roles}">
 				<option value = "ROLE_ADMIN">Administrator</option>
 				<option value = "ROLE_USER">Customer</option>
 			</select>
-Is active:<input type="checkbox" name="active" th:checked="*{active}" />
+<input hidden = false type="checkbox" name="active" th:checked="*{active}" checked/>
 <input name="submit" type="submit" value="submit" />
 </form>
 

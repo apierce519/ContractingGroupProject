@@ -49,7 +49,7 @@ th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" o
 Username: <input name="username" size="20" 
 th:field="*{username}"><br />
 
-Password: <input name="password" size="20" 
+Password: <input type = "PASSWORD" name="password" size="20" 
 th:field="*{password}"><br />
 
 First Name: <input name="firstName" size="20" 
@@ -62,7 +62,7 @@ User Type: <select name = "roles" th:field = "*{roles}">
 				<option value = "ROLE_ADMIN">Administrator</option>
 				<option value = "ROLE_USER">Customer</option>
 			</select>
-<input hidden = false type="checkbox" name="active" th:checked="*{active}" checked/>
+<input hidden = true type="checkbox" name="active" th:checked="*{active}" checked/>
 <input name="submit" type="submit" value="submit" />
 </form>
 

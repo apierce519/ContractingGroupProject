@@ -24,6 +24,7 @@ public class MyUserDetails implements UserDetails {
 	private String password;
 	private boolean active;
 	private List<GrantedAuthority> authorities;
+	private String roles;
 
 	public MyUserDetails(String username) {
 		this.username = username;
@@ -42,7 +43,7 @@ public class MyUserDetails implements UserDetails {
 		this.active = user.isActive();
 		this.authorities = Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());
-
+		this.roles = user.getRoles();
 	}
 
 	@Override
@@ -85,5 +86,12 @@ public class MyUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return active;
+	}
+
+	/**
+	 * @return the roles
+	 */
+	public String getRoles() {
+		return roles;
 	}
 }
