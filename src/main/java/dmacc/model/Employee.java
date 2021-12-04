@@ -21,5 +21,8 @@ public class Employee {
 	String firstName;
 	String lastName;
 	String role;
-		
+	
+	public String employeeInfo() {
+		return "[Id= " + id + " FirstName= " + firstName + " LastName= " + lastName + " Role= " + role + "]";
+	}
 }

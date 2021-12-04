@@ -22,11 +22,15 @@ import dmacc.model.User;
  */
 class MyUserDetailsTest {
 	//variables
-	private MyUserDetails a = new MyUserDetails();
 	private User b = new User();
-	private String username;
+	private MyUserDetails a = new MyUserDetails();
+	private String username = "test1";
 	private String password;
 	private boolean active;
 	private List<GrantedAuthority> authorities;
+	
+	@Test
+	public void testGettersAndSettersMyUserDetails() {
+	}
 		
 }
