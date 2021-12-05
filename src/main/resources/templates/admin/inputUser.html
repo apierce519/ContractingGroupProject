@@ -46,28 +46,36 @@
 <form th:object="${newUser}" 
 th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">>
 
-Username: <input name="username" size="20" 
-th:field="*{username}"><br />
+Username:<br>
+<input name="username" size="20" 
+th:field="*{username}"><br /><br>
 
-Password: <input name="password" size="20" 
-th:field="*{password}"><br />
+Password:<br>
+<input name="password" size="20" 
+th:field="*{password}"><br /><br>
 
-First Name: <input name="firstName" size="20" 
-th:field="*{firstName}"><br />
+First Name:<br>
+<input name="firstName" size="20" 
+th:field="*{firstName}"><br /><br>
 
-Last Name: <input name="lastName" size="20" 
-th:field="*{lastName}"><br />
+Last Name:<br>
+<input name="lastName" size="20" 
+th:field="*{lastName}"><br /><br>
 
-User Type: <select name = "roles" th:field = "*{roles}">
+User Type:<br>
+<select name = "roles" th:field = "*{roles}">
 				<option value = "ROLE_ADMIN">Administrator</option>
 				<option value = "ROLE_USER">Customer</option>
-			</select>
-<input hidden = false type="checkbox" name="active" th:checked="*{active}" checked/>
-<input name="submit" type="submit" value="submit" />
+			</select><br><br>
+Active:<br>
+<input type="checkbox" name="active" th:checked="*{active}" checked/><br><br>
+
+<input name="submit" type="submit" value="submit" /><br>
+<br>
 </form>
 
-<a href="viewUsers">View all Users</a>
-<a href="mainMenu">Main Menu</a><br>
+<a href="../viewUsers">View all Users</a>
+<a href="../mainMenu">Main Menu</a><br>
 <br>
 </body>
 </html>

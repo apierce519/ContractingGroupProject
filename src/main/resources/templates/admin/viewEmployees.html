@@ -6,7 +6,7 @@
 <body>
 <h1>View Employees</h1>
 <form>
-<table>
+<table style = "width:100%" border = "1">
 	<tr>
 		<th>ID</th>
 		<th>First Name</th>
@@ -18,17 +18,15 @@
  	<td th:text="${currentEmployee.firstName}" />
  	<td th:text="${currentEmployee.lastName}" />
  	<td th:text="${currentEmployee.role}" />
-	
-	
-	 <td><a th:href="@{/editEmployee/{id}(id=${currentEmployee.id})}">Edit</a></td>
-	 
-	 
-	  <td><a 
-	th:href="@{/deleteEmployee/{id}(id=${currentEmployee.id})}">Delete</a></td>
-	 </tr>
+	<td> <button type="button"><a th:href="@{/editEmployee/{id}(id=${currentEmployee.id})}">Edit</a></button> </td>
+		 
+	<td><button type="button"><a th:href="@{/deleteEmployee/{id}(id=${currentEmployee.id})}">Delete</a></button></td>
+</tr>
 </table>
 </form>
-<a href="mainMenu">Main Menu</a><br>
-<a href="inputEmployee">Add new Employee</a>	 
+<br>
+
+<a href="../mainMenu">Main Menu</a><br>
+<a href="../inputEmployee">Add new Employee</a>	 
 </body>
 </html>

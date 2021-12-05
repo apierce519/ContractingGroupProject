@@ -29,9 +29,9 @@ public class WebController {
 		MyUserDetails user = (MyUserDetails) auth.getPrincipal();
 		System.out.println(auth.getName());
 		if (user.getRoles().equals("ROLE_ADMIN")) {
-			return "mainMenu";
+			return "/admin/mainMenu";
 		} else {
-			return "customerMenu";
+			return "/user/customerMenu";
 		}
 	}
 

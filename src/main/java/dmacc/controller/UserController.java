@@ -32,18 +32,18 @@ public class UserController {
 	@GetMapping({ "/viewUsers", "/admin/viewUsers" })
 	public String viewUsers(Model model) {
 		if (userRepo.findAll().isEmpty()) {
-			return addNewUser(model);
+			return inputUser(model);
 		}
 		model.addAttribute("newUser", userRepo.findAll());
-		return "viewUsers";
+		return "/admin/viewUsers";
 	}
 
-	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
-	@GetMapping({ "/inputUser", "/admin/inputUser" })
-	private String addNewUser(Model model) {
+	@Secured({ "ROLE_ADMIN"})
+	@GetMapping({"/inputUser", "/admin/inputUser" })
+	private String inputUser(Model model) {
 		User u = new User();
 		model.addAttribute("newUser", u);
-		return "inputUser";
+		return "/admin/inputUser";
 	}
 
 	@Secured("ROLE_ADMIN")
@@ -59,7 +59,7 @@ public class UserController {
 	public String findUserToUpdate(@PathVariable("id") int id, Model model) {
 		User u = userRepo.findById(id).orElse(null);
 		model.addAttribute("newUser", u);
-		return "inputUser";
+		return "/admin/inputUser";
 	}
 
 	@Secured("ROLE_ADMIN")
@@ -67,5 +67,12 @@ public class UserController {
 	public String editUser(User u, Model model) {
 		userRepo.save(u);
 		return viewUsers(model);
+	}
+	
+	@GetMapping("/registerUser")
+	public String registerNewUser(Model model) {
+		User u = new User();
+		model.addAttribute("newUser",u);
+		return "registerUser";
 	}
 }

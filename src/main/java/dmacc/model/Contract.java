@@ -6,10 +6,14 @@
 
 package dmacc.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,8 +35,10 @@ public class Contract {
 	int manpower;
 	String author;
 	String notes;
-
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	List<Employee> employeeList;
 	// constructor
+	
 	public Contract(int id, String title, String length, int manpower, String notes) {
 		this.id = id;
 		this.title = title;

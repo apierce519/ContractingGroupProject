@@ -27,13 +27,23 @@
 <body>
 <h1>Add Equipment</h1>
 <form th:object="${newEquipment}" 
-th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" onsubmit =  "return(validate());">>
+th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" onsubmit =  "return(validate());">
 
-Name: <input name="name" size="20" 
-th:field="*{name}"><br />
+Name:<br>
+<input name="name" size="20" th:field="*{name}"><br /><br>
 
-Type: <input name="type" size="20" 
-th:field="*{type}"><br />
+Type:<br>
+<input name="type" size="20" th:field="*{type}"><br /><br>
+
+Status:<br>
+<input name="status.status" size ="20" th:field="*{status.status}"/><br /><br>
+
+Location:<br>
+<input name="status.location" size ="20" th:field="*{status.location}"/><br /><br>
+
+Duration:<br>
+<input name="status.duration" size ="20" th:field="*{status.duration}"/><br /><br>
+
 
 <input name="submit" type="submit" value="submit" />
 </form>

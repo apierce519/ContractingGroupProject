@@ -35,16 +35,18 @@ public class EquipmentController {
 			return addNewEquipment(model);
 		}
 		model.addAttribute("newEquipment", equipmentRepo.findAll());
-		return "viewEquipment";
+		return "/admin/viewEquipment";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/inputEquipment")
 	public String addNewEquipment(Model model) {
 		Equipment e = new Equipment();
 		model.addAttribute("newEquipment", e);
-		return "inputEquipment";
+		return "/admin/inputEquipment";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/deleteEquipment/{id}")
 	public String deleteEquipment(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
@@ -52,13 +54,15 @@ public class EquipmentController {
 		return viewEquipment(model);
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/editEquipment/{id}")
 	public String findEquipmentToUpdate(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
 		model.addAttribute("newEquipment", e);
-		return "inputEquipment";
+		return "/admin/inputEquipment";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/updateEquipment/{id}")
 	public String editEquipment(Equipment e, Model model) {
 		equipmentRepo.save(e);
@@ -66,29 +70,33 @@ public class EquipmentController {
 	}
 
 	// Status
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/inputStatus")
 	public String addNewEquipmentStatus(Model model) {
 		Equipment e = new Equipment();
 		model.addAttribute("newEquipment", e);
-		return "inputStatus";
+		return "/admin/inputStatus";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/editEquipmentStatus/{id}")
 	public String findStatusToUpdate(@PathVariable("id") int id, Model model) {
 		Equipment e = equipmentRepo.findById(id).orElse(null);
 		model.addAttribute("newEquipment", e);
-		return "inputStatus";
+		return "/admin/inputStatus";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/viewEquipmentStatus")
 	public String viewEquipmentStatus(Model model) {
 		if (equipmentRepo.findAll().isEmpty()) {
 			return addNewEquipment(model);
 		}
 		model.addAttribute("newEquipment", equipmentRepo.findAll());
-		return "viewEquipmentStatus";
+		return "/admin/viewEquipmentStatus";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/updateEquipmentStatus/{id}")
 	public String editEquipmentStatus(Equipment e, Model model) {
 		equipmentRepo.save(e);

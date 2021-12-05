@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// This method allows mapping paths to permissions based on user roles.
 
-		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN").antMatchers("/user").hasAnyRole("ADMIN", "USER")
+		http.authorizeRequests().antMatchers("/admin/").hasRole("ADMIN").antMatchers("/user/").hasAnyRole("ADMIN", "USER")
 				.antMatchers("/").permitAll().and().formLogin();
 
 		//http.logout().logoutUrl("/").logoutSuccessUrl("/");

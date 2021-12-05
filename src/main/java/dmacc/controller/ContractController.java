@@ -38,7 +38,7 @@ public class ContractController {
 			return openAddNewContractPage(model);
 		}
 		model.addAttribute("newContract", contractRepo.findAll());
-		return "viewContracts";
+		return "/shared/viewContracts";
 	}
 
 	@Secured("ROLE_ADMIN")
@@ -46,7 +46,7 @@ public class ContractController {
 	private String openAddNewContractPage(Model model) {
 		Contract c = new Contract();
 		model.addAttribute("newContract", c);
-		return "requestContract";
+		return "/user/requestContract";
 	}
 
 	@Secured("ROLE_ADMIN")
@@ -63,7 +63,7 @@ public class ContractController {
 	public String findContractToUpdate(@PathVariable("id") int id, Model model) {
 		Contract c = contractRepo.findById(id).orElse(null);
 		model.addAttribute("newContract", c);
-		return "editContract";
+		return "/admin/editContract";
 	}
 
 	@PostMapping("/updateContract/{id}")
@@ -86,7 +86,7 @@ public class ContractController {
 	public String requestContract(Model model) {
 		Contract c = new Contract();
 		model.addAttribute("newContract", c);
-		return "requestContract";
+		return "/user/requestContract";
 	}
 
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
@@ -106,7 +106,7 @@ public class ContractController {
 				}
 			}
 			model.addAttribute("newContract", foundContracts);
-			return "viewContracts";
+			return "/shared/viewContracts";
 		}
 	}
 }
