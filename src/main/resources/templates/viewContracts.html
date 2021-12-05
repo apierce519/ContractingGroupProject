@@ -8,7 +8,8 @@
 <form>
 <table>	
 		<tr>
-			<th style = "background-color: #aaa">ID</th>
+			<th>ID</th>
+			<th>Approval Status</th>
 			<th>Title</th>
 			<th>Length</th>
 			<th>Manpower</th>
@@ -19,11 +20,12 @@
 		<tr th:each="currentContract : ${newContract}" >
 			
 			<td th:text="${currentContract.id}" />
+			<td th:text="${currentContract.approvalStatus}" />
 			<td th:text="${currentContract.title}" />
 			<td th:text="${currentContract.length}" />
 			<td th:text="${currentContract.manpower}" />
 			<td th:text="${currentContract.author}"/>
-			<td th:text="${currentContract.notes}"/>
+			<td width = 250 th:text="${currentContract.notes}"/>
 			<td><a th:href="@{/editContract/{id}(id=${currentContract.id})}">Edit</a></td>
 			<td><a th:href="@{/deleteContract/{id}(id=${currentContract.id})}">Delete</a></td>
 		
@@ -31,6 +33,6 @@
 </table>
 </form>
 <a href="../inputContract">Add a new Contract</a>
-<a href="mainMenu">Back to Main Menu</a><br>
+<a href="../mainMenu">Back to Main Menu</a><br>
 </body>
 </html>

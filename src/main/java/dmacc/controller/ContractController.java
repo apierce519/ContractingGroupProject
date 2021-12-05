@@ -5,6 +5,9 @@
  */
 package dmacc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.access.annotation.Secured;
@@ -28,24 +31,25 @@ public class ContractController {
 	@Autowired
 	ContractRepository contractRepo;
 
-	// Contracts
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/viewContracts")
 	public String viewContracts(Model model) {
 		if (contractRepo.findAll().isEmpty()) {
-			return addNewContract(model);
+			return openAddNewContractPage(model);
 		}
 		model.addAttribute("newContract", contractRepo.findAll());
 		return "viewContracts";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/inputContract")
-	private String addNewContract(Model model) {
+	private String openAddNewContractPage(Model model) {
 		Contract c = new Contract();
 		model.addAttribute("newContract", c);
-		return "inputContract";
+		return "requestContract";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/deleteContract/{id}")
 	public String deleteContract(@PathVariable("id") int id, Model model) {
 		Contract c = contractRepo.findById(id).orElse(null);
@@ -53,16 +57,26 @@ public class ContractController {
 		return viewContracts(model);
 	}
 
+
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/editContract/{id}")
 	public String findContractToUpdate(@PathVariable("id") int id, Model model) {
 		Contract c = contractRepo.findById(id).orElse(null);
 		model.addAttribute("newContract", c);
-		return "inputContract";
+		return "editContract";
 	}
 
 	@PostMapping("/updateContract/{id}")
-	public String editContract(Contract c, Model model, Authentication auth) {
+	public String submitContractEdits(Contract c, Model model) {
+		contractRepo.save(c);
+		return viewContracts(model);
+	}
+
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@PostMapping("/addCustomerContract/{id}")
+	public String addCustomerContract(Contract c, Model model, Authentication auth) {
 		c.setAuthor(auth.getName());
+		c.setApprovalStatus("PENDING");
 		contractRepo.save(c);
 		return viewContracts(model);
 	}
@@ -73,5 +87,26 @@ public class ContractController {
 		Contract c = new Contract();
 		model.addAttribute("newContract", c);
 		return "requestContract";
+	}
+
+	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	@GetMapping("/viewSubmittedJobs")
+	public String viewSubmittedJobs(Model model, Authentication auth) {
+
+		if (contractRepo.findAll().isEmpty()) {
+			return openAddNewContractPage(model);
+		} else {
+			List<Contract> contractList = contractRepo.findAll();
+			List<Contract> foundContracts = new ArrayList<Contract>();
+			for (Contract c : contractList) {
+				if (c.getAuthor() != null) {
+					if (c.getAuthor().equals(auth.getName())) {
+						foundContracts.add(c);
+					}
+				}
+			}
+			model.addAttribute("newContract", foundContracts);
+			return "viewContracts";
+		}
 	}
 }

@@ -25,6 +25,7 @@ public class Contract {
 	@Id
 	@GeneratedValue
 	int id;
+	String approvalStatus;
 	String title;
 	String length;
 	int manpower;
