@@ -4,10 +4,36 @@
 <meta charset="ISO-8859-1">
 <title>Add an Employee</title>
 </head>
+<script type = "text/javascript">
+
+	function validate(){
+		
+		if(document.employeeForm.firstName.value == ""){
+			alert("Please enter the employee's first name");
+			document.employeeForm.firstName.focus();
+			return false;
+		}
+		
+		if(document.employeeForm.lastName.value == ""){
+			alert("Please enter the employee's last name");
+			document.employeeForm.lastName.focus();
+			return false;
+		}
+		
+		if(document.employeeForm.role.value == ""){
+			alert("Please enter the employee role");
+			document.employeeForm.role.focus();
+			return false;
+		}
+		
+			return ( true );
+	}
+	
+</script>
 <body>
 <h1>Add Employees</h1>
 <form th:object="${newEmployee}" 
-th:action="@{/updateEmployee/{id}(id=${newEmployee.id})}" method=POST name= "employeeForm" >>
+th:action="@{/updateEmployee/{id}(id=${newEmployee.id})}" method=POST name= "employeeForm" onsubmit =  "return(validate());" >>
 
 First Name:<br>
 <input name="firstName" size="20" th:field="*{firstName}"><br /><br>
