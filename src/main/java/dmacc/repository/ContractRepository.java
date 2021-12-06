@@ -12,6 +12,6 @@ import dmacc.model.Contract;
 /**
  * @author Andrew Pierce - ajpierce1
  */
-public interface ContractRepository extends JpaRepository<Contract , Integer>{
+public interface ContractRepository extends JpaRepository<Contract, Integer> {
 
 }

@@ -32,22 +32,41 @@
 	
 </script>
 <body>
-<h1>Add a Contract</h1>
+<h1>Edit Contracts</h1>
+
 <form th:object="${newContract}" 
-th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST name= "contractForm" onsubmit =  "return(validate());">>
+th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST name= "contractForm" onsubmit =  "return(validate());">
 
-Title: <input name="title" size="20" 
-th:field="*{title}"><br />
+Approval Status:<br>
+<select name="approvalStatus" th:field="*{approvalStatus}">
+				<option value = "PENDING">Pending</option>
+				<option value = "APPROVED">Approved</option>
+				<option value = "DENIED">Denied</option>
+			</select><br><br>
+Title:<br>
+<input name="title" size="20" th:field="*{title}"><br /><br>
 
-Length: <input name="length" size="20" 
-th:field="*{length}"><br />
+Length:<br>
+<input name="length" size="20" th:field="*{length}"><br /><br>
 
-Number of workers: <input name="manpower" size="20" 
-th:field="*{manpower}"><br />
+Number of workers:<br>
+<input name="manpower" size="20" th:field="*{manpower}"><br /><br>
+
+Author:<br>
+<input placeholder = "auto set to username" name="author" size="20" 
+th:field="*{author}"><br /><br>
+
+Customer note box<br>
+<TEXTAREA Name="notes" ROWS="5" COLS="50" th:field = "*{notes}"></TEXTAREA>
+<br>
 
 <input name="submit" type="submit" value="submit" />
 </form>
+
+<br>
+
 <a href="viewContracts">View all Contracts</a><br>
-<a href="index.html">Back to Homepage</a><br>
+<a href="../mainMenu">Back to Main Menu</a><br>
+
 </body>
 </html>
