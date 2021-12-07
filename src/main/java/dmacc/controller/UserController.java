@@ -62,7 +62,7 @@ public class UserController {
 		return "/admin/inputUser";
 	}
 
-	@Secured("ROLE_ADMIN")
+	//@Secured("ROLE_ADMIN")
 	@PostMapping("/updateUser/{id}")
 	public String editUser(User u, Model model) {
 		userRepo.save(u);
