@@ -10,7 +10,9 @@
 <h1>Equipment</h1>
 </header>
 <form>
-<table>
+<div style="text-align:center;">
+  <div style="width:75%; margin: 0 auto; text-align:left;">
+    <table style="width:100%;" border="1">
 <tr th:each="currentEquipment : ${newEquipment}" >
 
 <td th:text="${currentEquipment.id}" />
@@ -24,6 +26,8 @@
 	th:href="@{/editEquipmentStatus/{id}(id=${currentEquipment.id})}">Edit Status</a></td>
 </tr>
 </table>
+</div>
+</div>
 </form>
 <a href="../inputEquipment">Add new Equipment</a>
 <a href="../viewEquipment">View Equipment</a>
