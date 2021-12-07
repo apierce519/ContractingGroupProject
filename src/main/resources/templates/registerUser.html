@@ -44,7 +44,7 @@
 <body>
 <h1>Register a new User</h1>
 <form th:object="${newUser}" 
-th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">>
+th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">
 
 Username:<br>
 <input name="username" size="20" 
@@ -73,7 +73,7 @@ User Type:<br>
 <br>
 </form>
 
-<a href="viewUsers">View all Users</a>
+<a href="../">Go Back</a>
 <a href="mainMenu">Main Menu</a><br>
 <br>
 </body>
