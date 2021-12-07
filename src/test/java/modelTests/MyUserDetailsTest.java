@@ -1,7 +1,7 @@
 /**
  *@author -Colby Boell -cmboell
  *CIS175 -Fall 2021
- *Dec 1, 2021
+ *Dec 6, 2021
  */
 
 package modelTests;
@@ -21,16 +21,15 @@ import dmacc.model.User;
  *
  */
 class MyUserDetailsTest {
-	//variables
+
 	private User b = new User();
-	private MyUserDetails a = new MyUserDetails();
+	private MyUserDetails a = new MyUserDetails(); 
 	private String username = "test1";
 	private String password;
 	private boolean active;
 	private List<GrantedAuthority> authorities;
-	
 	@Test
 	public void testGettersAndSettersMyUserDetails() {
 	}
-		
+
 }
