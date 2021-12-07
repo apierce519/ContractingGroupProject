@@ -33,8 +33,9 @@
 	
 </script>
 <body>
+<header>
 <h1>Edit Contracts</h1>
-
+</header>
 <form th:object="${newContract}" 
 th:action="@{/updateContract/{id}(id=${newContract.id})}" method=POST name= "contractForm" onsubmit =  "return(validate());">
 

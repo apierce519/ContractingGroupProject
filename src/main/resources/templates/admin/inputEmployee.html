@@ -32,7 +32,9 @@
 	
 </script>
 <body>
+<header>
 <h1>Add Employees</h1>
+</header>
 <form th:object="${newEmployee}" 
 th:action="@{/updateEmployee/{id}(id=${newEmployee.id})}" method=POST name= "employeeForm" onsubmit =  "return(validate());" >>
 

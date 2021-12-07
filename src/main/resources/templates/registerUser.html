@@ -43,10 +43,12 @@
 	
 </script>
 <body>
+<header>
 <h1>Register a new User</h1>
+</header>
 <form th:object="${newUser}" 
 th:action="@{/updateUser/{id}(id=${newUser.id})}" method=POST name= "userForm" onsubmit =  "return(validate());">
-
+<img src="/images/user.png" height=12% width=12% alt="User Logo"/><br>
 Username:<br>
 <input name="username" size="20" 
 th:field="*{username}"><br /><br>
