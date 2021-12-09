@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+body{
+	text-align:center;
+	background-color: lightblue;
+}
+header{
+	background-color:orange;
+	padding: 5px;
+	margin: -8px -8px 10px -8px;
+	border: solid black 3px;
+}
+h1{color: darkblue;
+   text-decoration: underline;
+}
+
+a{
+	color: blue;
+}
+a:hover{
+	color:orange;
+}
+
+
+img{
+	border: darkblue solid 5px;
+	padding: -1px;
+}

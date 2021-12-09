@@ -2,11 +2,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
+<header>
 <h1>View Employees</h1>
+</header>
 <form>
-<table style = "width:100%" border = "1">
+<div style="text-align:center;">
+  <div style="width:75%; margin: 0 auto; text-align:left;">
+    <table style="width:100%;" border="1">
 	<tr>
 		<th>ID</th>
 		<th>First Name</th>
@@ -18,14 +23,15 @@
  	<td th:text="${currentEmployee.firstName}" />
  	<td th:text="${currentEmployee.lastName}" />
  	<td th:text="${currentEmployee.role}" />
-	<td> <button type="button"><a th:href="@{/editEmployee/{id}(id=${currentEmployee.id})}">Edit</a></button> </td>
+	<td><a th:href="@{/editEmployee/{id}(id=${currentEmployee.id})}">Edit</a></td>
 		 
-	<td><button type="button"><a th:href="@{/deleteEmployee/{id}(id=${currentEmployee.id})}">Delete</a></button></td>
-</tr>
+	<td><a th:href="@{/deleteEmployee/{id}(id=${currentEmployee.id})}">Delete</a></td>
+
 </table>
+</div>
+</div>
 </form>
 <br>
-
 <a href="../mainMenu">Main Menu</a><br>
 <a href="../inputEmployee">Add new Employee</a>	 
 </body>

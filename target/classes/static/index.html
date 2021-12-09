@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Main Menu</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/indexCss.css"/>
 </head>
 <body>
+<header>
 <h1>
 Welcome to the Landing Page! 
 </h1>
+</header>
 <h2>
 Here is where we put information about our business and the wonderful things we are doing with stuff!!!!
 </h2>
-<h5>
+<img src="/images/bulldozer.jpg" height=50% width=50% alt="Bulldozer"/><br>
+<h3>
 <br>
-<a href = "mainMenu">Main Menu</a><br>
-<a href = "login">Login</a><br>
+<a href ="mainMenu" class="indexMenu">Main Menu</a><br>
+<a href = "login" class="indexMenu">Login</a><br>
 <a href = "registerUser">Register</a>
-</h5>
+</h3>
 </body>
 </html>

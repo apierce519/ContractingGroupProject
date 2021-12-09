@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Equipment</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <script type = "text/javascript">
 
@@ -25,7 +26,9 @@
 	
 </script>
 <body>
+<header>
 <h1>Add Equipment</h1>
+</header>
 <form th:object="${newEquipment}" 
 th:action="@{/updateEquipment/{id}(id=${newEquipment.id})}" method=POST  name= "equipmentForm" onsubmit =  "return(validate());">
 
