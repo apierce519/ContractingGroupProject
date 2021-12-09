@@ -60,9 +60,20 @@ Author:<br>
 th:field="*{author}"><br /><br>
 
 Customer note box<br>
-<TEXTAREA Name="notes" ROWS="5" COLS="50" th:field = "*{notes}"></TEXTAREA>
+<TEXTAREA Name="userNotes" ROWS="5" COLS="50" th:field = "*{userNotes}"></TEXTAREA>
 <br>
 
+Company note box<br>
+<TEXTAREA Name="adminNotes" ROWS="5" COLS="50" th:field = "*{adminNotes}"></TEXTAREA>
+<br>
+
+Employees:<br>
+<select name = "employeeList" multiple = "multiple" size = "6" th:field = "*{employeeList}">
+
+	<option th:each = "employee : ${employees}" th:value = "${employee.id}" th:text="${employee.firstName} + '|' + ${employee.lastName} + ' | ' + ${employee.role}"></option>
+
+</select>
+<br>
 <input name="submit" type="submit" value="submit" />
 </form>
 

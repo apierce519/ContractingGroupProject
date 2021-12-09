@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import dmacc.model.Contract;
 import dmacc.repository.ContractRepository;
+import dmacc.repository.EmployeeRepository;
 
 /**
  * @author Andrew Pierce - ajpierce1
@@ -30,6 +31,8 @@ public class ContractController {
 
 	@Autowired
 	ContractRepository contractRepo;
+	@Autowired
+	EmployeeRepository employRepo;
 
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/viewContracts")
@@ -45,6 +48,7 @@ public class ContractController {
 	@GetMapping("/inputContract")
 	private String openAddNewContractPage(Model model) {
 		Contract c = new Contract();
+		model.addAttribute("employees",employRepo.findAll());
 		model.addAttribute("newContract", c);
 		return "/user/requestContract";
 	}
@@ -62,8 +66,9 @@ public class ContractController {
 	@GetMapping("/editContract/{id}")
 	public String findContractToUpdate(@PathVariable("id") int id, Model model) {
 		Contract c = contractRepo.findById(id).orElse(null);
+		model.addAttribute("employees",employRepo.findAll());
 		model.addAttribute("newContract", c);
-		return "/admin/editContract";
+		return "admin/editContract";
 	}
 
 	@PostMapping("/updateContract/{id}")
