@@ -19,7 +19,8 @@
 			<th>Length</th>
 			<th>Manpower</th>
 			<th>Author</th>
-			<th>Notes</th>
+			<th>Customer Notes</th>
+			<th>Company Notes</th>
 
 		</tr>
 		<tr th:each="currentContract : ${newContract}" >
@@ -30,7 +31,8 @@
 			<td th:text="${currentContract.length}" />
 			<td th:text="${currentContract.manpower}" />
 			<td th:text="${currentContract.author}"/>
-			<td width = 250 th:text="${currentContract.notes}"/>
+			<td width = 250 th:text="${currentContract.userNotes}"/>
+			<td width = 250 th:text="${currentContract.adminNotes}"/>
 			<td><a th:href="@{/editContract/{id}(id=${currentContract.id})}">Edit</a></td>
 			<td><a th:href="@{/deleteContract/{id}(id=${currentContract.id})}">Delete</a></td>
 		

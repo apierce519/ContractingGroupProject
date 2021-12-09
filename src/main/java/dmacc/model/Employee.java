@@ -29,6 +29,7 @@ public class Employee {
 	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	List<Equipment> equipmentList;
 	
+	
 	public String employeeInfo() {
 		return "[Id= " + id + " FirstName= " + firstName + " LastName= " + lastName + " Role= " + role + "]";
 	}

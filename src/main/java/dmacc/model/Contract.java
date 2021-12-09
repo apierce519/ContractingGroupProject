@@ -34,17 +34,19 @@ public class Contract {
 	String length;
 	int manpower;
 	String author;
-	String notes;
+	String userNotes;
+	String adminNotes = "";
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	List<Employee> employeeList;
 	// constructor
 	
-	public Contract(int id, String title, String length, int manpower, String notes) {
+	public Contract(int id, String title, String length, int manpower, String notes, String adminNotes) {
 		this.id = id;
 		this.title = title;
 		this.length = length;
 		this.manpower = manpower;
-		this.notes = notes;
+		this.userNotes = notes;
+		this.adminNotes = adminNotes;
 	}
 
 	// method

@@ -78,7 +78,7 @@ public class ContractController {
 		c.setAuthor(auth.getName());
 		c.setApprovalStatus("PENDING");
 		contractRepo.save(c);
-		return viewContracts(model);
+		return "/user/customerMenu";
 	}
 
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
