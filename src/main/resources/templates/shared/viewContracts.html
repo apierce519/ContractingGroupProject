@@ -21,6 +21,7 @@
 			<th>Author</th>
 			<th>Customer Notes</th>
 			<th>Company Notes</th>
+			<th>Employee Names</th>
 
 		</tr>
 		<tr th:each="currentContract : ${newContract}" >
@@ -33,6 +34,7 @@
 			<td th:text="${currentContract.author}"/>
 			<td width = 250 th:text="${currentContract.userNotes}"/>
 			<td width = 250 th:text="${currentContract.adminNotes}"/>
+			<td th:each="employee : ${currentContract.employeeList}" th:text="${employee.firstName}"/>
 			<td><a th:href="@{/editContract/{id}(id=${currentContract.id})}">Edit</a></td>
 			<td><a th:href="@{/deleteContract/{id}(id=${currentContract.id})}">Delete</a></td>
 		
